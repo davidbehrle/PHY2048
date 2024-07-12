@@ -522,6 +522,67 @@ Finally, combine these components using Pythagorean theorem
     This angle is $31\degree$ east of north, or $59\degree$ counterclockwise with respect to $+x$
 \end{shaded}
 
+\newpage
+\begin{shaded}
+    \underline{\bf{Example 9.15:} Exploding Scuba Tank}
+    \vspace{2mm}\\
+    A common scuba tank is an aluminum cylinder that weighs 14.4 kg empty. Suppose such a tank, which had been sitting motionless, suddenly explodes into three pieces. The first piece, weighing 4.5 kg, shoots off horizontally at 105 ms$^{-1}$; the second piece (3.2 kg) shoots off at 77 ms$^{-1}$ at an angle of $19\degree$ to the first piece. What is the mass and initial velocity of the third piece?
+    \vspace{1mm}\\
+    First apply conservation of momentum in each direction\\
+    \begin{minipage}{0.45\textwidth}
+        \begin{align*}
+            \text{$x$ direction}\\
+            p_{f,x} &= p_{0,x}\\
+            p_{1,x} + p_{2,x} + p_{3,x} &= 0\\
+            m_1v_{1,x} + m_2v_{2,x} + p_{3,x} &= 0\\
+            -m_1v_{1,x} + m_2v_{2,x} &= p_{3,x}
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \begin{align*}
+            \text{$y$ direction}\\
+            p_{f,y} &= p_{0,y}\\
+            p_{1,y} + p_{2,y} + p_{3,y} &= 0\\
+            m_1v_{1,y} + m_2v_{2,y} + p_{3,y} &= 0\\
+            -m_1v_{1,y} + m_2v_{2,y} &= p_{3,y}
+        \end{align*}
+    \end{minipage}
+    \vspace{2mm}\\
+    For the chosen coordinate system, the $x$ and $y$ components are written as
+    \vspace{0mm}\\
+    \begin{minipage}{0.45\textwidth}
+        \begin{align*}
+            &\text{$x$ direction}\\
+            p_{3,x} =& -m_1v_1 - m_2v_2\cos(\theta)\\
+            =& -(4.5\text{ kg})(105\text{ ms}^{-1})\sin(19\degree)\\
+            =& -705\text{ kg\ ms}^{-1}
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+        \begin{align*}
+            &\text{$y$ direction}\\
+            p_{3,y} =& 0 - m_2v_2\sin(\theta)\\
+            =& -(3.2\text{ kg})(77\text{ ms}^{-1})\sin(19\degree)\\
+            =& -80.2\text{ kg\ ms}^{-1}
+        \end{align*}
+    \end{minipage}\\
+    This gives the components of $p_3$ from which we can find the magnitude
+    \begin{align*}
+        p_3 &= \sqrt{p_{3,x}^2 + p_{3,y}^2}\\
+        &= \sqrt{\Big(-705\text{ kg\ ms}^{-1}\Big)^2 + \Big(-80.2\text{ kg\ ms}^{-1}\Big)^2}\\
+        &= 710\text{ kg\ ms}^{-1}
+    \end{align*}
+    Therefore, the velocity of the third piece is
+    \begin{align*}
+        v_3 = \frac{p_3}{m_3} = \frac{710\text{ kg\ ms}^{-1}}{6.7\text{ kg}} = 106\text{ ms}^{-1}
+    \end{align*}
+    The direction of the velocity vector is the same as the direction of the momentum vector:
+    \begin{align*}
+        \phi = \tan^{-1}\bigg(\frac{p_{3,y}}{p_{3,x}}\bigg) = \tan^{-1}\Bigg(\frac{-80.2\text{ kg\ ms}^{-1}}{705\text{ kg\ ms}^{-1}}\Bigg) = 6.49\degree
+    \end{align*}
+    Because $\phi$ is below the $-x$ axis, the actual angle is $183.5\degree$ from the $+x$ direction
+\end{shaded}
+
 \subsection{Center of Mass}
 \bf{Internal \& External Forces}
 \vspace{2mm}\\
