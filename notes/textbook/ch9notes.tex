@@ -23,6 +23,7 @@
 \let\phi\varphi
 \let\bf\textbf
 \colorlet{shadecolor}{orange!15}
+\def\centerarc[#1](#2)(#3:#4:#5){\draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5)}
 
 \title{Linear Momentum \& Collisions}
 \author{OpenStax University Physics Vol. 1}
@@ -702,7 +703,7 @@ The point that obeys equation 26 and 27 is the center of mass of the object, loc
     \end{enumerate}
 \end{minipage}
 \newpage
-Since $\vec{r}_j = x_j\hat{i} + y_j\hat{j} + z_j\hat{k}$, it follows that:
+\noindent Since $\vec{r}_j = x_j\hat{i} + y_j\hat{j} + z_j\hat{k}$, it follows that:
 \begin{align}
     r_{cm,x} &= \frac{1}{M}\sum_{j = 1}^{N}m_jx_j\\
     r_{cm,y} &= \frac{1}{M}\sum_{j = 1}^{N}m_jy_j\\
@@ -717,5 +718,128 @@ Therefore, the components of the center of mass vector can be calculated individ
 \begin{equation}
     \vec{v}_{cm} = \frac{d}{dt}\bigg(\frac{1}{M}\sum_{j = 1}^{N}m_j\vec{r}_j\bigg) = \frac{1}{M}\sum_{j = 1}^{N}m_j\vec{v}_j
 \end{equation}
+
+\begin{shaded}
+    \underline{\bf{Example 9.16:} Center of Mass of the Earth-Moon System}
+    \vspace{2mm}\\
+    Using data from the text appendix, determine how far the center of mass of the Earth-Moon system is from the center of Earth. Compare this distance to the radius of Earth.
+    \vspace{1mm}\\
+    From Appendix D: $m_e = 5.97 \cdot 10^{24}$ kg, $m_m = 7.36 \cdot 10^{22}$ kg, $r_m = 3.82 \cdot 10^{8}$ m
+    \vspace{1mm}\\
+    Define the origin of the coordinate system as the center of Earth, with two objects, equation 29 becomes:
+    \begin{align*}
+        R = \frac{m_e r_e + m_m r_m}{m_e + m_m}
+    \end{align*}
+    The center of the Earth was defined as the origin so $r_e = 0$ m. Substituting the above values into the equation for $R$ gives:
+    \begin{align*}
+        R &= \frac{(5.97 \cdot 10^{24}\text{ kg})(0\text{ m}) + (7.36 \cdot 10^{22}\text{ kg})(3.82 \cdot 10^8\text{ m})}{(5.97 \cdot 10^{24}\text{ kg}) + (7.36 \cdot 10^{22}\text{ kg})}\\
+        R &= 4.64 \cdot 10^6\text{ m}
+    \end{align*}
+    The radius of the Earth is $6.37 \cdot 10^6$ m, so the center of mass of the Earth-Moon system is $(6.37 - 4.64) \cdot 10^6$ m $= 1.73 \cdot 10^6$ m = 1730 km below the surface of the Earth
+\end{shaded}
+
+\noindent\bf{Center of Mass of Continuous Objects}
+\vspace{2mm}\\
+If the object in question, has its mass distributed uniformly in space, rather than as a collection of discreet particles, then $m_j \to dm$, and the summation becomes an integral:
+\begin{equation}
+    \vec{r}_{cm} = \frac{1}{M}\int\vec{r}dm
+\end{equation}
+In this context $r$ is a characteristic dimension of the object. To generate an integrand that can actually be calculated, the differential mass element $dm$ must be expressed as a function of the mass density of the continuous object, and the dimension $r$. This is clarified in the following example.
+
+\newpage
+\begin{shaded}
+    \underline{\bf{Example 9.18:} Center of Mass of a Uniform Thin Hoop}
+    \vspace{2mm}\\
+    Because of the hoop's symmetry, its center of mass should be at its geometric center. Defining the coordinate system such that the origin is located at the center of the hoop, the integral should evaluate to zero.
+    \vspace{1mm}\\
+    We replace $dm$ with an expression involving the density of the hoop and the radius of the hoop to create an expression that can be integrated. We treat the hoop as a 1D object, its density is expressed as the number of $\sfrac{\text{kg}}{\text{m}}$. This kind of density is called \bf{linear mass density} and is given the symbol $\lambda$.
+    \vspace{1mm}\\
+    Because the hoop is described as uniform, the linear mass density $\lambda$ is constant. To get an expression for the differential mass element $dm$, we multiply $\lambda$ by a differential length of the hoop, substitute, and integrate (with appropriate limits for the definite integral).\\
+    \begin{tikzpicture}[scale=1.5]
+        %%% AXES %%%
+        \draw[<-] (-1.5,0)--(0,0);
+        \draw[->] ({cos(60)},0)--(1.5,0) node[right]{$x$};
+        \draw[<->] (0,-1.5)--(0,1.5) node[above]{$y$};
+        \draw (0,0) circle (1);
+
+        %%% COORDINATES %%%
+        \draw (0,0) coordinate (O);
+        \draw ({cos(60)},{sin(60)}) coordinate (a) node{};
+        \draw ({cos(60)},0) coordinate (b) node{};
+
+        %%% ARC dm %%%
+        \centerarc[red,very thick](0,0)(56:64:1);
+
+        %%% LINES %%%
+        \draw[->,very thick,-stealth] (O)--node[left,xshift=1.2mm,yshift=1mm]{$r$}(a);
+        \draw[line width=0.75pt,dashed] (a)--(b)--node[below]{$x$}(O);
+        \draw pic[draw=blue, -, angle eccentricity=2, angle radius=0.25cm]{angle=b--O--a};
+        \node at (0.27,0.2){$\theta$};
+
+        %%% ds LINE %%%
+        \draw[line width=0.5pt] ({cos(64)},{sin(64)})--node[left,xshift=0.8mm,yshift=1.8mm]{$ds$}({(cos(64) + 0.2*cos(60))},{(sin(64) + 0.2*sin(60))});
+        \draw[line width=0.5pt] ({cos(56)},{sin(56)})--({(cos(56) + 0.2*cos(60))},{(sin(56) + 0.2*sin(60))});
+
+        \draw[->,-stealth] ({1.4*cos(60)},{1.4*sin(60)})--({1.1*cos(60)},{1.1*sin(60)});
+        \node at ({1.6*cos(60)},{1.6*sin(60)}){$dm$};
+    \end{tikzpicture}\\
+    The center of mass is calculated with equation 34:
+    \begin{align*}
+        \displaystyle \vec{r}_{cm} = \frac{1}{M} \int_{a}^{b}\vec{r}dm 
+    \end{align*}
+    We need to determine the limits of integration $a$ and $b$. The piece of the hoop of differential length $ds$ has a differential mass $dm = \lambda ds$, substituting in and expressing $\vec{r}$ in component form gives:
+    \begin{align*}
+        \vec{r}_{cm} &= \frac{1}{M}\int_{a}^{b} \Big[(r\cos(\theta))\hat{i} + (r\sin(\theta))\hat{j}\Big]dm\\
+        \vec{r}_{cm} &= \frac{1}{M}\int_{a}^{b} \Big[(r\cos(\theta))\hat{i} + (r\sin(\theta))\hat{j}\Big]\lambda ds
+    \end{align*}
+    The arc length $ds$ subtends a different angle $d\theta$ so we have $ds = rd\theta$, thus:
+    \begin{align*}
+        \vec{r}_{cm} = \frac{1}{M}\int_{a}^{b} \Big[(r\cos(\theta))\hat{i} + (r\sin(\theta))\hat{j}\Big]\lambda rd\theta
+    \end{align*}
+    Since $\lambda$ is the linear mass density, it is computed by dividing the total mass by the length of the hoop: $\displaystyle \lambda = \frac{M}{2\pi r}$\\
+    This gives us:
+    \begin{align*}
+        \vec{r}_{cm} &= \frac{1}{M}\int_{a}^{b} \Big[(r\cos(\theta))\hat{i} + (r\sin(\theta))\hat{j}\Big]\bigg(\frac{M}{2\pi r}\bigg) rd\theta\\
+        &= \frac{1}{2\pi}\int_{a}^{b} \Big[(r\cos(\theta))\hat{i} + (r\sin(\theta))\hat{j}\Big] d\theta
+    \end{align*}
+    The variable of integration is now the angle $\theta$. This tells us that the limits of integration are $\theta = 0$ to $\theta = 2\pi$, so $a = 0$ \& $b = 2\pi$
+    \begin{align*}
+        \vec{r}_{cm} &= \frac{1}{2\pi}\int_{0}^{2\pi} \Big[(r\cos(\theta))\hat{i} + (r\sin(\theta))\hat{j}\Big] d\theta\\
+        \vec{r}_{cm} &= r_{cm,x}\hat{i} + r_{cm,y}\hat{j}\\
+        &= \bigg[\frac{1}{2\pi}\int_{0}^{2\pi}\big(r\cos(\theta)\big)d\theta\bigg]\hat{i} + \bigg[\frac{1}{2\pi}\int_{0}^{2\pi}\big(r\sin(\theta)\big)d\theta\bigg]\hat{j}\\
+        &= 0\hat{i} + 0\hat{j} = \vec{0}
+    \end{align*}
+\end{shaded}
+\newpage
+
+\noindent\bf{Center of Mass and Conservation of Momentum}
+\vspace{2mm}\\
+Suppose you have $N$ objects with masses $m_1, m_2, m_3, ... m_N$ and initial velocities $\vec{v}_1, \vec{v}_2, \vec{v}_3, ... \vec{v}_N$, the center of mass of the object is given by
+\begin{align*}
+    \vec{r}_{cm} = \frac{1}{M}\sum_{j = 1}^{N}m_j\vec{r}_j
+\end{align*}
+Its velocity is:
+\begin{equation}
+    \vec{v}_{cm} = \frac{d\vec{r}_{cm}}{dt} = \frac{1}{M}\sum_{j = 1}^{N}m_j\frac{d\vec{r}_j}{dt}
+\end{equation}
+And thus, the initial momentum of the center of mass is:
+\begin{align*}
+    \bigg[M\frac{d\vec{r}_{cm}}{dt}\bigg]_i &= \sum_{j = 1}^{N}m_j\frac{d\vec{r}_{j,i}}{dt}\\
+    M\vec{v}_{cm,i} &= \sum_{j = 1}^{N}m_j\vec{v}_{j,i}
+\end{align*}
+After these masses move and interact with each other, the momentum of the center of mass is
+\begin{align*}
+    M\vec{v}_{cm,f} &= \sum_{j = 1}^{N}m_j\vec{v}_{j,f}
+\end{align*}
+Conservation of momentum tells us that the right hand side of both equations must be equal, which says:
+\begin{equation}
+    M\vec{v}_{cm,f} = M\vec{v}_{cm,i}
+\end{equation}
+This implies that conservation of momentum is expressed in terms of the center of mass of the system. An individual particle of the object may accelerate in various directions with various magnitudes depending on the net internal force acting on the object. Such a particle's momentum will not be constant, but the momentum of the entire extended object will be.\par
+Since $M$ represents the mass of the entire system of particles, it is necessarily constant. As a result, equation 36 implies that for a closed system:
+\begin{equation}
+    \vec{v}_{cm,f} = \vec{v}_{cm,i}
+\end{equation}
+In other words, in the absence of an external force, the velocity of the center of mass never changes
 
 \end{document}
