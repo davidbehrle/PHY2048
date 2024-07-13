@@ -23,6 +23,7 @@
 \let\phi\varphi
 \let\bf\textbf
 \colorlet{shadecolor}{orange!15}
+\newcommand\der[2]{\frac{d #1}{d #2}}
 \def\centerarc[#1](#2)(#3:#4:#5){\draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5)}
 % Syntax: [draw options] (center) (initial angle:final angle:radius);
 
@@ -58,6 +59,7 @@ The figure shows a particle moving in a circle. Its position vector from the ori
 
         \centerarc[red,very thick](0,0)(0:55:1);
         \node at ({1.15*cos(30)},{1.15*sin(30)}){$s$};
+        \filldraw[red] ({cos(55)},{sin(55)}) circle (0.75pt);
     \end{tikzpicture}
 \end{center}
 The angle is related to the radius of the circle and the arc length by 
@@ -85,6 +87,18 @@ The magnitude of the angular velocity, denoted by $\omega$, is the time rate of 
 \begin{equation}
     \omega = \lim\limits_{\Delta t \to 0}\frac{\Delta\theta}{\Delta t} = \frac{d\theta}{dt}
 \end{equation}
-Where $\theta$ is the angle of rotation. The units of angular velocity are radians per second (rad\;s$^{-1}$). Angular velocity can also be referred to as the rotation rate in radians per second. In many cases, rotation rate is given in revolutions/s or cycles/s, to find angular velocity, multiply revolutions/s by $2\pi$ (since there are $2\pi$ radians per revolution). Since a positive angle in a circle is counterclockwise, we take counterclockwise rotations as being positive and clockwise rotations as negative.
-
+Where $\theta$ is the angle of rotation. The units of angular velocity are radians per second (rad\;s$^{-1}$). Angular velocity can also be referred to as the rotation rate in radians per second. In many cases, rotation rate is given in revolutions/s or cycles/s, to find angular velocity, multiply revolutions/s by $2\pi$ (since there are $2\pi$ radians per revolution). Since a positive angle in a circle is counterclockwise, we take counterclockwise rotations as being positive and clockwise rotations as negative.\vspace{1mm}\par
+\noindent We can see how angular velocity is related to the tangential speed of the particle by differentiating equation 1 with respect to time. Equation 1 can be rewritten as:
+\begin{align*}
+    s = \theta r
+\end{align*}
+Taking the derivative with respect to time and noting that the radius $r$ is constant gives:
+\begin{align*}
+    \der{s}{t} = \der{}{t}(r\theta) = \theta\der{r}{t} + r\der{\theta}{t} = r\der{\theta}{t}
+\end{align*}
+Where $\theta\der{r}{t} = 0$. Here, $\der{s}{t}$ is just the tangential speed $v_t$ of the particle moving in a circular path. Using equation 3 we arrive at:
+\begin{equation}
+    v_t = r\omega
+\end{equation}
+The tangential speed of the particle is its angular velocity times the radius of the circle.
 \end{document}
