@@ -3,3 +3,6 @@
 *.synctex.gz
 *.fdb_latexmk
 *.fls
+notes/textbook/ch9notes.synctex.gz
+notes/textbook/ch9notes.log
+notes/textbook/ch9notes.fdb_latexmk
