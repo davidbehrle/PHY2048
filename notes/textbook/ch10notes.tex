@@ -63,4 +63,27 @@ The angle is related to the radius of the circle and the arc length by
 \begin{equation}
     \theta = \frac{s}{r}
 \end{equation}
+The angle $\theta$, the angular position of the particle moving along its path has units of radians (rad). As the particle moves along its circular path, its angular position changes and it undergoes angular displacements $\Delta\theta$.\par\vspace{1mm}
+\noindent We can assign vectors to the quantities in equation 1, the angle $\vec{\theta}$ is a vector out of the page. The angular position vector $\vec{r}$ and the arc length vector $\vec{s}$ both lie in the plane of the page, they are related by:
+\begin{equation}
+    \vec{s} = \vec{\theta} \times \vec{r}
+\end{equation}
+The arc length is the cross product of the angle vector and the position vector
+\begin{center}
+    \begin{tikzpicture}[scale=2]
+        \draw[->,-latex] (0,0)--(1,0) node[right]{$y$};
+        \draw[->,-latex] (0,0)--node[right]{$\vec{\theta}$} (0,1) node[above]{$z$};
+        \draw[->,-latex] (0,0)--(-{cos(45)},-{sin(45)}) node[left]{$x$};
+
+        \draw[->,very thick,-stealth] (0,0)--(0,0.75);
+        \draw[->,very thick,-stealth] (0,0)--node[below,xshift=-2mm,yshift=0.5mm]{$\vec{r}$}({0.7*cos(65)},{-0.7*cos(65)});
+        \draw[->,very thick,-stealth,draw=red] ({0.7*cos(65)},{-0.7*cos(65)})--node[right,yshift=-1mm,xshift=-0.5mm]{$\vec{s}$}({0.7*cos(65) + 0.28},{-0.7*cos(65) + 0.28});
+    \end{tikzpicture}
+\end{center}
+The magnitude of the angular velocity, denoted by $\omega$, is the time rate of change of the angle $\theta$ as the particle moves in a circular path. The instantaneous angular velocity, defined as the limit as $\Delta t \to 0$ of the average angular velocity $\bar{\omega} = \frac{\Delta\theta}{\Delta t}$
+\begin{equation}
+    \omega = \lim\limits_{\Delta t \to 0}\frac{\Delta\theta}{\Delta t} = \frac{d\theta}{dt}
+\end{equation}
+Where $\theta$ is the angle of rotation. The units of angular velocity are radians per second (rad\;s$^{-1}$). Angular velocity can also be referred to as the rotation rate in radians per second. In many cases, rotation rate is given in revolutions/s or cycles/s, to find angular velocity, multiply revolutions/s by $2\pi$ (since there are $2\pi$ radians per revolution). Since a positive angle in a circle is counterclockwise, we take counterclockwise rotations as being positive and clockwise rotations as negative.
+
 \end{document}
