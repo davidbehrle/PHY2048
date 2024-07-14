@@ -24,6 +24,7 @@
 \let\bf\textbf
 \colorlet{shadecolor}{orange!15}
 \newcommand\der[2]{\frac{d #1}{d #2}}
+\newcommand\Deltat{\Delta t}
 \def\centerarc[#1](#2)(#3:#4:#5){\draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5)}
 % Syntax: [draw options] (center) (initial angle:final angle:radius);
 
@@ -286,5 +287,85 @@ The tangential acceleration $a_t$ is the radius times the angular acceleration
         Thus:\hspace{2.5mm} $\alpha(0.0\text{ s}) = -0.6$ rad\;s$^{-2}$, $\alpha(15.0\text{ s}) = -0.3$ rad\;s$^{-2}$, and $\alpha(30.0\text{s}) = 0$ rad\;s$^{-2}$
     \end{enumerate}
 \end{shaded}
+
+\newpage
+\subsection{Rotation With Constant Angular Acceleration}
+In this section, the definitions from the previous section are used to derive relationships among these variables, and use these relationships to analyze rotational motion for a rigid body about a fixed axis under a constant angular acceleration, forming the basis for rotational kinematics. If angular acceleration is constant, the equations of rotational kinematics simplify, similar to the equations of linear kinematics. 
+\vspace{2mm}\\
+\bf{Kinematics of Rotational Motion}
+\vspace{2mm}\\
+In the previous section we saw that if a flywheel has an angular acceleration in the same direction as its angular velocity, its angular velocity increases with time and its angular displacement also increases. If the angular acceleration is opposite to the angular velocity vector, its angular velocity decreases with time. Under a constant angular acceleration, we can describe these physical situations with a consistent set of rotational kinematic equations.
+\vspace{2mm}\\
+If the system is rotating under a constant acceleration, then the average angular velocity follows a simple relation because the angular velocity is increasing linearly with time. The average angular velocity is just half of the sum of the initial and final values:
+\begin{equation}
+    \bar{\omega} = \frac{\omega_0 + \omega_f}{2}
+\end{equation}
+Using the definition of average angular velocity, an equation that relates the angular position, average angular velocity, and time can be found:
+\begin{align*}
+    \bar{\omega} = \frac{\Delta\theta}{\Delta t}
+\end{align*}
+Solving for $\theta$ gives:
+\begin{equation}
+    \theta_f = \theta_0 + \bar{\omega}t
+\end{equation}
+Where $t_0 = 0$. This equation can be useful when the average angular velocity of the system is known. Then the angular displacement over a given period of time could be found. To determine an equation relating $\omega, \alpha$, and $t$, we start with the definition of angular acceleration:
+\begin{align*}
+    \alpha = \der{\omega}{t}
+\end{align*}
+This is rearranged to $\alpha dt = d\omega$, then we integrate both sides of the equation from initial to final values, from $t_0$ to $t$ and from $\omega_0$ to $\omega_f$. (angular acceleration is constant and can be pulled outside)
+\begin{align*}
+    \alpha\int_{t_0}^{t}dt = \int_{\omega_0}^{\omega_f}d\omega
+\end{align*}
+Setting $t_0 = 0$ gives:
+\begin{align*}
+    \alpha t = \omega_f - \omega_0
+\end{align*}
+This is rearranged to obtain 
+\begin{equation}
+    \omega_f = \omega_0 + \alpha t
+\end{equation}
+Where $\omega_0$ is the initial angular velocity. This equation is the rotational counterpart to the linear kinematic equation $v_f = v_0 + at$. With equation 11, the angular velocity of an object at any specified time $t$ can be found given the initial angular velocity and angular acceleration.
+\vspace{1mm}\\
+Doing a similar thing to the equation $\omega = \der{\theta}{t}$, rearranging it to $\omega dt = d\theta$ and integrating both sides from initial to final values, noting that angular acceleration is constant and does not have a time dependence. This time angular velocity is not constant, so equation 11 is substituted in:
+\begin{align*}
+    \int_{t_0}^{t_f}(\omega_0 + \alpha t)dt &= \int_{\theta+0}^{\theta_f}d\theta\\
+    \int_{t_0}^{t}\omega_0dt + \int_{t_0}^{t}\alpha t dt &= \int_{\theta_0}^{\theta_f}d\theta\\
+    \bigg[\omega_0t + \frac{1}{2}\alpha t^2\bigg]_{t_0}^t = \omega_0t + &\frac{1}{2}\alpha t^2 = \theta_f - \theta_0
+\end{align*}
+Where $t_0 = 0$. Now we rearrange to obtain:
+\begin{equation}
+    \theta_f = \theta_0 + \omega_0t + \frac{1}{2}\alpha t^2
+\end{equation}
+This is the rotational counterpart to the linear kinematic equation $s_f = s_0 + v_0t + \frac{1}{2}at^2$. This equation gives the angular position of a rotating rigid body at any time $t$ given the initial conditions ($\theta_0$ and $\omega_0$) and the angular acceleration
+\newpage
+\noindent We can find an equation that is independent of time by solving for $t$ in equation 11 and substituting into equation 12:
+\begin{align*}
+    \theta_f &= \theta_0 + \omega_0 \bigg(\frac{\omega_f - \omega_0}{\alpha}\bigg) + \frac{1}{2}\alpha \bigg(\frac{\omega_f - \omega_0}{\alpha}\bigg)^2\\
+    &= \theta_0 + \frac{\omega_0\omega_f}{\alpha} - \frac{\omega_0^2}{\alpha} + \frac{1}{2}\frac{\omega_f^2}{\alpha} - \frac{\omega_0\omega_f}{\alpha} + \frac{1}{2}\frac{\omega_0^2}{\alpha}\\
+    &= \theta_0 + \frac{1}{2}\frac{\omega_f^2}{\alpha} - \frac{1}{2}\frac{\omega_0^2}{\alpha}\\
+    \theta_f - \theta_0 &= \frac{\omega_f^2 - \omega_0^2}{2\alpha}
+\end{align*}
+This rearranges to:
+\begin{equation}
+    \omega_f^2 = \omega_0^2 + 2\alpha(\Delta\theta)
+\end{equation}
+Equations 10 - 13 describe fixed-axis rotation for constant acceleration and are summarized below
+\begin{center}
+    \begin{tabularx}{0.4\textwidth}{ 
+        | >{\raggedright\arraybackslash}X  
+        | >{\raggedright\arraybackslash}X |}
+        \hline
+        Rotational & Linear\\[2.5pt]
+        \hline
+        $\theta_f = \theta_0 + \bar{\omega}t$ & $s_f = s_0 + \bar{v}t$\\[2.5pt]
+        \hline
+        $\omega_f = \omega_0 + \alpha t$ & $v_f = v_0 + at$\\[2.5pt]
+        \hline
+        $\theta_f = \theta_0 + \omega_0t + \frac{1}{2}\alpha t^2$ & $s_f = s_0 + v_0t + \frac{1}{2}at^2$\\[2.5pt]
+        \hline
+        $\omega_f^2 = \omega_0^2 + 2\alpha(\Delta\theta)$ & $v_f^2 = v_0^2 + 2a(\Delta s)$\\[2.5pt]
+        \hline
+    \end{tabularx}
+\end{center}
 
 \end{document}
