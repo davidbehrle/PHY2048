@@ -816,35 +816,37 @@ In this context $r$ is a characteristic dimension of the object. To generate an 
     \vspace{1mm}\\
     We replace $dm$ with an expression involving the density of the hoop and the radius of the hoop to create an expression that can be integrated. We treat the hoop as a 1D object, its density is expressed as the number of $\sfrac{\text{kg}}{\text{m}}$. This kind of density is called \bf{linear mass density} and is given the symbol $\lambda$.
     \vspace{1mm}\\
-    Because the hoop is described as uniform, the linear mass density $\lambda$ is constant. To get an expression for the differential mass element $dm$, we multiply $\lambda$ by a differential length of the hoop, substitute, and integrate (with appropriate limits for the definite integral).\\
-    \begin{tikzpicture}[scale=1.5]
-        %%% AXES %%%
-        \draw[<-] (-1.5,0)--(0,0);
-        \draw[->] ({cos(60)},0)--(1.5,0) node[right]{$x$};
-        \draw[<->] (0,-1.5)--(0,1.5) node[above]{$y$};
-        \draw (0,0) circle (1);
-
-        %%% COORDINATES %%%
-        \draw (0,0) coordinate (O);
-        \draw ({cos(60)},{sin(60)}) coordinate (a) node{};
-        \draw ({cos(60)},0) coordinate (b) node{};
-
-        %%% ARC dm %%%
-        \centerarc[red,very thick](0,0)(56:64:1);
-
-        %%% LINES %%%
-        \draw[->,very thick,-stealth] (O)--node[left,xshift=1.2mm,yshift=1mm]{$r$}(a);
-        \draw[line width=0.75pt,dashed] (a)--(b)--node[below]{$x$}(O);
-        \draw pic[draw=blue, -, angle eccentricity=2, angle radius=0.25cm]{angle=b--O--a};
-        \node at (0.27,0.2){$\theta$};
-
-        %%% ds LINE %%%
-        \draw[line width=0.5pt] ({cos(64)},{sin(64)})--node[left,xshift=0.8mm,yshift=1.8mm]{$ds$}({(cos(64) + 0.2*cos(60))},{(sin(64) + 0.2*sin(60))});
-        \draw[line width=0.5pt] ({cos(56)},{sin(56)})--({(cos(56) + 0.2*cos(60))},{(sin(56) + 0.2*sin(60))});
-
-        \draw[->,-stealth] ({1.4*cos(60)},{1.4*sin(60)})--({1.1*cos(60)},{1.1*sin(60)});
-        \node at ({1.6*cos(60)},{1.6*sin(60)}){$dm$};
-    \end{tikzpicture}\\
+    Because the hoop is described as uniform, the linear mass density $\lambda$ is constant. To get an expression for the differential mass element $dm$, we multiply $\lambda$ by a differential length of the hoop, substitute, and integrate (with appropriate limits for the definite integral).
+    \begin{center}
+        \begin{tikzpicture}[scale=1.5]
+            %%% AXES %%%
+            \draw[<-] (-1.5,0)--(0,0);
+            \draw[->] ({cos(60)},0)--(1.5,0) node[right]{$x$};
+            \draw[<->] (0,-1.5)--(0,1.5) node[above]{$y$};
+            \draw (0,0) circle (1);
+    
+            %%% COORDINATES %%%
+            \draw (0,0) coordinate (O);
+            \draw ({cos(60)},{sin(60)}) coordinate (a) node{};
+            \draw ({cos(60)},0) coordinate (b) node{};
+    
+            %%% ARC dm %%%
+            \centerarc[red,very thick](0,0)(56:64:1);
+    
+            %%% LINES %%%
+            \draw[->,very thick,-stealth] (O)--node[left,xshift=1.2mm,yshift=1mm]{$r$}(a);
+            \draw[line width=0.75pt,dashed] (a)--(b)--node[below]{$x$}(O);
+            \draw pic[draw=blue, -, angle eccentricity=2, angle radius=0.25cm]{angle=b--O--a};
+            \node at (0.27,0.2){$\theta$};
+    
+            %%% ds LINE %%%
+            \draw[line width=0.5pt] ({cos(64)},{sin(64)})--node[left,xshift=0.8mm,yshift=1.8mm]{$ds$}({(cos(64) + 0.2*cos(60))},{(sin(64) + 0.2*sin(60))});
+            \draw[line width=0.5pt] ({cos(56)},{sin(56)})--({(cos(56) + 0.2*cos(60))},{(sin(56) + 0.2*sin(60))});
+    
+            \draw[->,-stealth] ({1.4*cos(60)},{1.4*sin(60)})--({1.1*cos(60)},{1.1*sin(60)});
+            \node at ({1.6*cos(60)},{1.6*sin(60)}){$dm$};
+        \end{tikzpicture} 
+    \end{center}
     The center of mass is calculated with equation 34:
     \begin{align*}
         \displaystyle \vec{r}_{cm} = \frac{1}{M} \int_{a}^{b}\vec{r}dm 
