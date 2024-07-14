@@ -184,6 +184,8 @@ For describing situations where $\omega$ changes, we need to define angular acce
     \alpha = \lim_{\Delta t \to 0}\frac{\Delta\omega}{\Delta t} = \der{\omega}{t} = \frac{d^2\theta}{dt^2}
 \end{equation}
 Where we have taken the limit of the average angular acceleration $\bar{\alpha} = \frac{\Delta\omega}{\Delta t}$ as $\Delta t \to 0$. The units of angular acceleration are radians/s per second, or rad\;s$^{-2}$. 
+\vspace{1mm}\par
+\noindent In the same way that the vector associated with angular velocity $\vec{\omega}$ was defined, we can define $\vec{\alpha}$, the vector associated with angular acceleration. If the angular velocity is along the $+z$ axis and $\der{\omega}{t}$ is positive, the angular acceleration $\vec{\alpha}$ is positive and points along the $+z$ axis, if $\der{\omega}{t}$ is negative, the angular acceleration is negative and points along the $-z$ axis.
 
 \begin{center}
     \begin{tikzpicture}
@@ -203,5 +205,86 @@ Where we have taken the limit of the average angular acceleration $\bar{\alpha} 
         \centerarc[->,black!50,thick,-stealth](0,0)(-10:10:1.7);
     \end{tikzpicture}
 \end{center}
+The tangential acceleration vector can be expressed as a cross product of the angular acceleration and position vectors. This equation can be found by taking the derivative of equation 5
+\begin{equation}
+    \vec{a} = \vec{\alpha} \times \vec{r}
+\end{equation}
+The vector relationships for angular acceleration and tangential acceleration are shown below
+\begin{center}
+    \begin{tikzpicture}[scale=2]
+        \draw[->,-latex] (0,0)--(1,0) node[right]{$y$};
+        \draw[->,-latex] (0,0)--(0,1) node[above]{$z$};
+        \draw[->,-latex] (0,0)--(-{cos(45)},-{sin(45)}) node[left]{$x$};
+
+        \draw[->,very thick,-stealth] (0,0)--node[right]{$\vec{\alpha}$}(0,0.75);
+        \draw[->,very thick,-stealth,draw=red] ({0.7*cos(65)},{-0.7*cos(65)})--node[right,yshift=-1mm,xshift=-0.5mm]{$\vec{a}$}({0.7*cos(65) + 0.26},{-0.7*cos(65) + 0.26});
+        \draw[->,very thick,-stealth] (0,0)--node[below,xshift=-2mm,yshift=0.5mm]{$\vec{r}$}({0.7*cos(65)},{-0.7*cos(65)});
+    \end{tikzpicture}
+    \hspace{15mm}
+    \begin{tikzpicture}[scale=2]
+        \draw[->,-latex] (0,0)--(1,0) node[right]{$y$};
+        \draw[->,-latex] (0,0)--(0,1) node[above]{$z$};
+        \draw[->,-latex] (0,0)--(-{cos(45)},-{sin(45)}) node[left]{$x$};
+
+        \draw[->,very thick,-stealth] (0,0)--node[left]{$\vec{\alpha}$}(0,-0.75);
+        \draw[->,very thick,-stealth,draw=red] ({0.7*cos(65)},{-0.7*cos(65)})--node[right,yshift=-1mm,xshift=-0.5mm]{$\vec{a}$}({0.7*cos(65) - 0.26},{-0.7*cos(65) - 0.26});
+        \draw[->,very thick,-stealth] (0,0)--node[above,yshift=-1.5mm,xshift=1.5mm]{$\vec{r}$}({0.7*cos(65)},{-0.7*cos(65)});
+    \end{tikzpicture}
+\end{center}
+Tangential acceleration of a point on a rotating body at a distance from the axis of rotation can be related in the same way as tangential velocity and angular velocity. Differentiating equation 4 with respect to time (the radius $r$ is constant) gives:
+\begin{equation}
+    a_t = r\alpha
+\end{equation}
+The tangential acceleration $a_t$ is the radius times the angular acceleration
+\begin{shaded}
+    \underline{\bf{Example 10.2:} A Spinning Bike Wheel}
+    \vspace{2mm}\\
+    A bicycle mechanic mounts a bicycle on the repair stand and starts the rear wheel spinning from rest to a final angular velocity of 250 rpm in 5.00 s.
+    \begin{enumerate}
+        \item[(a)] Calculate the average angular acceleration in rad\;s$^{-2}$
+        \begin{align*}
+            \displaystyle \bar{\alpha} = \frac{\Delta\omega}{\Delta t} = \frac{250\text{ rpm}}{5.00\text{ s}}
+        \end{align*}
+        Converting from rpm to rad\;s$^{-1}$:
+        \begin{align*}
+            \Delta\omega = 250\frac{\text{rev}}{\text{min}} \cdot \frac{2\pi\text{ rad}}{\text{rev}} \cdot \frac{1\text{ min}}{60\text{ s}} = 26.2\text{rad\;s}^{-1}
+        \end{align*}
+        Entering this back into the expression for $\alpha$ gives:
+        \begin{align*}
+            \alpha = \frac{\Delta\omega}{\Delta t} = \frac{26.2\text{ rad\;s}^{-1}}{5.00\text{ s}} = 5.24\text{ rad\;s}^{-2}
+        \end{align*}
+        \item[(b)] If the brakes are hit, causing an angular acceleration of -87 rad\;s$^{-2}$, how long does it take the wheel to stop?
+        \vspace{1mm}\\
+        Angular velocity decreases from 26.2 rad\;s$^{-1}$ to zero so $\Delta\omega = -26.2$ rad\;s$^{-1}$, and $\alpha$ is given to be -87.3 rad\;s$^{-2}$
+        \begin{align*}
+            \Delta t = \frac{\Delta\omega}{\alpha} = \frac{-26.2\text{ rad\;s}^{-1}}{-87.3\text{ rad\;s}^{-2}} = 0.300\text{ s}
+        \end{align*}
+    \end{enumerate}
+\end{shaded}
+
+\newpage
+\begin{shaded}
+    \underline{\bf{Example 10.3:} Wind Turbine}
+    \vspace{2mm}\\
+    A wind turbine in a wind farm is being shut down for maintenance. It takes 30 s for the turbine to go from its operating angular velocity to a complete stop in which the angular velocity function is $\omega(t) = \Big[\frac{(t\text{s}^{-1} - 30.0)^2}{100.0}\Big]$rad\;s$^{-1}$, where $t$ is the time in seconds. If the turbine is rotating counterclockwise looking into the page:
+    \begin{enumerate}
+        \item[(a)] What are the directions of the angular velocity and acceleration vectors?
+        \vspace{1mm}\\
+        Since the turbine is rotating counterclockwise, angular velocity $\vec{\omega}$ points towards $+z$. Since the angular velocity is decreasing, the angular acceleration $\vec{\alpha}$ points towards $-z$
+        \item[(b)] What is the average angular acceleration?
+        \vspace{1mm}\\
+        At $t = 0$, the initial angular velocity of the turbine is $\omega = 9.0$ rad\;s$^{-1}$, the final angular velocity is zero, so the average angular velocity $\bar{\alpha}$ is:
+        \begin{align*}
+            \bar{\alpha} = \frac{\Delta\omega}{\Delta t} = \frac{\omega - \omega_0}{t - t_0} = \frac{0 - 9.0\text{ rad\;s}^{-1}}{30.0 - 0\text{ s}} = -0.3\text{ rad\;s}^{-2}
+        \end{align*}
+        \item[(c)] What is the instantaneous angular acceleration at $t = 0.0, 15.0, 30.0$ s?
+        \vspace{1mm}\\
+        Taking the derivative of angular velocity with respect to time gives
+        \begin{align*}
+            \alpha = \der{\omega}{t} = \bigg[\frac{(t - 30.0)}{50.0}\bigg]\text{ rad\;s}^{-2}
+        \end{align*}
+        Thus:\hspace{2.5mm} $\alpha(0.0\text{ s}) = -0.6$ rad\;s$^{-2}$, $\alpha(15.0\text{ s}) = -0.3$ rad\;s$^{-2}$, and $\alpha(30.0\text{s}) = 0$ rad\;s$^{-2}$
+    \end{enumerate}
+\end{shaded}
 
 \end{document}
