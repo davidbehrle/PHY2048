@@ -490,4 +490,51 @@ Equations 10 - 13 describe fixed-axis rotation for constant acceleration and are
     \end{enumerate}
 \end{shaded}
 
+\subsection{Relating Angular and Translational Quantities}
+\bf{Angular vs. Linear Variables}
+\vspace{2mm}\\
+Comparing the definitions of the rotational variables with the definitions of linear kinematic variables shows that there is a mapping of the linear variables to the rotational ones. Linear position, velocity, and acceleration have their rotational counterparts, as seen below.
+\begin{center}
+    \begin{tabularx}{0.4\textwidth}{ 
+        | >{\raggedright\arraybackslash}X
+        | >{\centering\arraybackslash}X  
+        | >{\centering\arraybackslash}X |}
+        \hline
+        & \bf{Linear} & \bf{Rotational}\\
+        \hline
+        Position & $x$ & $\theta$\\
+        \hline
+        Velocity & $v = \der{x}{t}$ & $\omega = \der{\theta}{t}$\\
+        \hline
+        Acceleration & $a = \der{v}{t}$ & $\alpha = \der{\omega}{t}$\\
+        \hline
+    \end{tabularx}
+\end{center}
+In uniform and nonuniform circular motion, there exists a centripetal acceleration $a_c$. The centripetal acceleration vector points inward from the particle toward the axis of rotation. The magnitude of centripetal acceleration is:
+\begin{equation}
+    a_c = \frac{v^2_t}{r}
+\end{equation}
+In uniform circular motion, when $\omega =$ constant and $\alpha = 0$, there is a linear acceleration - centripetal acceleration - since $v_t =$ constant
+\begin{center}
+    \begin{tikzpicture}[scale=1]
+        \draw[thick] (0,0) circle (2cm);
+        \draw[line width=0.5pt,dashed] (a)--(0,0);
+        \draw ({2*cos(30)},{2*sin(30)}) coordinate (a);
+        \draw (0,2) coordinate (b);
+        \draw[->,very thick,-stealth,draw=blue] (a)--node[right]{$\vec{v_1}$}([turn]90:1.65cm);
+        \draw[->,very thick,-stealth,draw=red] (a)--node[below]{$\vec{a}_c$}([turn]180:1.25cm);
+        \draw[->,very thick,-stealth,draw=blue] (b)--node[above]{$\vec{v_2}$}([turn]90:1.65cm);
+    \end{tikzpicture}
+    \hspace{20mm}
+    \begin{tikzpicture}[scale=1]
+        \draw (0,0) coordinate (c);
+        \draw (-{1.65*cos(60)},{1.65*sin(60)}) coordinate (a);
+        \draw ({1.65*cos(60)},{1.65*sin(60)}) coordinate (b);
+        \draw[->,very thick,-stealth,draw=blue] (c)--node[right]{$\vec{v}_1$}(b);
+        \draw[->,very thick,-stealth,draw=blue] (c)--node[left]{$\vec{v}_2$}(a);
+        \draw[->,very thick,-stealth,draw=red] (b)--node[above]{$\vec{a}_c \propto \Delta\vec{v}$}(a);
+        \node at (0,-1.25){};
+    \end{tikzpicture}
+\end{center}
+
 \end{document}
