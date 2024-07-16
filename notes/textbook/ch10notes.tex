@@ -11,6 +11,7 @@
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{tikz}
+\usepackage{pgfplots}
 \usepackage{framed}
 \usepackage{xfrac}
 \usepackage[most]{tcolorbox}
@@ -19,12 +20,21 @@
 \usetikzlibrary{quotes,angles}
 \usetikzlibrary{decorations.pathreplacing}
 \usetikzlibrary{calc}
+\usepgfplotslibrary{fillbetween}
 
 \let\phi\varphi
 \let\bf\textbf
 \colorlet{shadecolor}{orange!15}
+\pgfplotsset{compat=1.18}
 \newcommand\der[2]{\frac{d #1}{d #2}}
 \newcommand\Deltat{\Delta t}
+\newcommand\rads{\text{ rad\;s}^{-1}}
+\newcommand\radss{\text{ rad\;s}^{-2}}
+\newcommand\rad{\text{ rad}}
+\newcommand\s{\text{ s}}
+\newcommand\ms{\text{ ms}^{-1}}
+\newcommand\mss{\text{ ms}^{-2}}
+\newcommand\kgms{\text{kg\;ms}^{-1}}
 \def\centerarc[#1](#2)(#3:#4:#5){\draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5)}
 % Syntax: \centerarc[draw options] (center) (initial angle:final angle:radius);
 
@@ -367,5 +377,117 @@ Equations 10 - 13 describe fixed-axis rotation for constant acceleration and are
         \hline
     \end{tabularx}
 \end{center}
+
+\begin{shaded}
+    \underline{\bf{Example: 10.4/5} Calculating the Acceleration of a Fishing Pole}
+    \vspace{2mm}\\
+    A deep-sea fisherman hooks a big fish that swims away from the boat, pulling the fishing line from his fishing reel. The whole system is initially at rest, and the fishing line unwinds from the reel at a radius of 4.50 cm from its axis of rotation. The reel is given an angular acceleration of 110 rad\;s$^{-2}$ for 2.00 s
+    \begin{enumerate}
+        \item[(a)] What is the final velocity of the reel after 2 s?
+        \vspace{1mm}\\
+        Since $\alpha$ and $t$ are given, the most straightforward equation to use to find $\omega$ is $\omega_f = \omega_0 + \alpha t$. Because the system starts from rest, $\omega_0 = 0$, so:
+        \begin{align*}
+            \omega_f = 0 + (110\text{ rad\;s}^{-2})(2.00\text{ s}) = 220\text{ rad\;s}^{-1}
+        \end{align*}
+        \item[(b)] How many revolutions does the reel make? 
+        \vspace{1mm}\\
+        To find the number of revolutions, find $\theta$ in radians (1 rev = $2\pi$ rad). $\alpha$ and $t$ are given, and $\omega_0 = 0$, so $\theta$ can be obtained by using:
+        \begin{align*}
+            \theta_f &= \theta_0 + \omega_0t + \frac{1}{2}\alpha t^2\\
+            &= 0 + 0 + \frac{1}{2}\Big(110\text{ rad\;s}^{-2}\Big)(2.00\text{ s})^2\\
+            &= 200\text{ rad}
+        \end{align*}
+        Converting from radians to revolutions:
+        \begin{align*}
+            (220\text{ rad})\bigg(\frac{1\text{ rev}}{2\pi\text{ rad}}\bigg) = 35.0\text{ rad}
+        \end{align*}
+        \item[(c)] Now the fisherman applies a brake to the spinning wheel, achieving an angular acceleration of -300 rad\;s$^{-2}$. How long does it take for the reel to come to a stop?
+        \vspace{1mm}\\
+        Solving the equation $\omega_f = \omega_0 + \alpha t$ for $t$, and substituting in known values gives:
+        \begin{align*}
+            t = \frac{\omega_f - \omega_0}{\alpha} = \frac{0 - 220.0\text{ rad\;s}^{-1}}{-300\text{ rad\;s}^{-2}} = 0.733\text{ s}
+        \end{align*}
+    \end{enumerate}
+\end{shaded}
+
+\newpage
+\begin{shaded}
+    \underline{\bf{Example 10.6:} Angular Acceleration of a Propeller}
+    \vspace{2mm}\\
+    The figure shows a graph of the angular velocity of a propeller on an aircraft as a function of time. Its angular velocity starts at 30$\rads$ and drops linearly to 0$\rads$ over the course of 5 s.
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                axis lines=left,
+                xlabel=\bf{Time (s)},
+                ylabel=\bf{Angular Velocity ($\rads$)},
+                xmax=5.2,
+                ymax=52,
+                xtick distance=0.5,
+                ytick distance=5,
+            ]
+            \addplot[
+                very thick,
+                domain=0:5,
+                samples=100,
+                color=red,
+                name path=A,
+            ]
+            {-6*x + 30};
+                
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+    \begin{enumerate}
+        \item[(a)] Find the angular acceleration of the object and verify the result using kinematic equations
+        \vspace{1mm}\\
+        Because angular velocity varies linearly with time, angular acceleration is constant and not dependent on time. The angular acceleration is the derivative of angular velocity, $\alpha = \der{\omega}{t}$. At $t = 0$ s, $\omega_0 = 30\rads$ and at $t = 5$ s, $\omega_f = 0\rads$
+        \begin{align*}
+            \alpha = \frac{\omega - \omega_0}{t - t_0} = \frac{(0 - 30.0)\rads}{(5.0 - 0)\s} = -6.0\radss
+        \end{align*}
+        \item[(b)] Find the angle through which the propeller rotates during these 5 seconds and verify your result using kinematic equations
+        \vspace{1mm}\\
+        Since $\omega = \der{\theta}{t}$, angular displacement $\Delta\theta$ can be calculated by integrating the angular velocity
+        \begin{align*}
+            \int_{\theta_0}^{\theta_f}d\theta = \theta_f - \theta_0 = \int_{t_0}^{t_f}\omega(t)dt
+        \end{align*}
+        The area under the curve can be found by calculating the area of the right triangle shown:
+        \begin{center}
+            \begin{tikzpicture}
+                \begin{axis}[
+                    axis lines=left,
+                    xlabel=\bf{Time (s)},
+                    ylabel=\bf{Angular Velocity ($\rads$)},
+                    xmax=5.2,
+                    ymax=52,
+                    xtick distance=0.5,
+                    ytick distance=5,
+                    axis on top,
+                ]
+                \addplot[
+                    very thick,
+                    domain=0:5,
+                    samples=100,
+                    color=red,
+                    name path=A,
+                ]
+                {-6*x + 30};
+                \path[name path=B]
+                    (axis cs:\pgfkeysvalueof{/pgfplots/xmin},0)--
+                    (axis cs:\pgfkeysvalueof{/pgfplots/xmax},0);
+                \addplot[red!45] fill between[of=A and B,soft clip={domain=0:5},];
+                \end{axis}
+            \end{tikzpicture}
+        \end{center}
+        \begin{align*}
+            \Delta\theta &= A(\text{triangle}) = \frac{1}{2}l \times h\\
+            \Delta\theta &= \frac{1}{2}\Big(30\rads\Big)(5\s)
+        \end{align*}
+        This is verified using equation 12 ($\theta_f = \theta_0 + \omega_0t + \frac{1}{2}\alpha t^2$), and setting $\theta_0 = 0$ gives:
+        \begin{align*}
+            \theta_f = \big(30.0\rads\big)(5.0\s) + \frac{1}{2}\big(-6.0\radss\big)\big(5.0\rads\big)^2 = 150.0 - 75.0 = 75.0\rad
+        \end{align*}
+    \end{enumerate}
+\end{shaded}
 
 \end{document}
