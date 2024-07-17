@@ -32,6 +32,7 @@
 \newcommand\radss{\text{ rad\;s}^{-2}}
 \newcommand\rad{\text{ rad}}
 \newcommand\s{\text{ s}}
+\newcommand\m{\text{ m}}
 \newcommand\ms{\text{ ms}^{-1}}
 \newcommand\mss{\text{ ms}^{-2}}
 \newcommand\kgms{\text{kg\;ms}^{-1}}
@@ -514,16 +515,16 @@ In uniform and nonuniform circular motion, there exists a centripetal accelerati
 \begin{equation}
     a_c = \frac{v^2_t}{r}
 \end{equation}
-In uniform circular motion, when $\omega =$ constant and $\alpha = 0$, there is a linear acceleration - centripetal acceleration - since $v_t =$ constant
+In uniform circular motion, when $\omega =$ constant and $\alpha = 0$, there is a linear acceleration - centripetal acceleration - since $v_t =$ constant. If nonuniform circular motion is present, the rotating system has an angular acceleration, and there is both a linear centripetal acceleration that is changing ($\Delta v_t \neq 0$) as well as a linear tangential acceleration.
 \begin{center}
     \begin{tikzpicture}[scale=1]
         \draw[thick] (0,0) circle (2cm);
         \draw[line width=0.5pt,dashed] (a)--(0,0);
         \draw ({2*cos(30)},{2*sin(30)}) coordinate (a);
         \draw (0,2) coordinate (b);
-        \draw[->,very thick,-stealth,draw=blue] (a)--node[right]{$\vec{v_1}$}([turn]90:1.65cm);
+        \draw[->,very thick,-stealth,draw=blue] (a)--node[right]{$\vec{v}_1$}([turn]90:1.65cm);
         \draw[->,very thick,-stealth,draw=red] (a)--node[below]{$\vec{a}_c$}([turn]180:1.25cm);
-        \draw[->,very thick,-stealth,draw=blue] (b)--node[above]{$\vec{v_2}$}([turn]90:1.65cm);
+        \draw[->,very thick,-stealth,draw=blue] (b)--node[above]{$\vec{v}_2$}([turn]90:1.65cm);
     \end{tikzpicture}
     \hspace{20mm}
     \begin{tikzpicture}[scale=1]
@@ -535,6 +536,98 @@ In uniform circular motion, when $\omega =$ constant and $\alpha = 0$, there is 
         \draw[->,very thick,-stealth,draw=red] (b)--node[above]{$\vec{a}_c \propto \Delta\vec{v}$}(a);
         \node at (0,-1.25){};
     \end{tikzpicture}
+    \hspace{20mm}
+    \begin{tikzpicture}[scale=1]
+        \draw[thick] (0,0) circle (2cm);
+        \draw[line width=0.5pt,dashed] ({2*cos(30)},{2*sin(30)})--(0,0);
+        \draw ({2*cos(30)},{2*sin(30)}) coordinate (a);
+        \draw ({-2*cos{70}},{2*sin(70)}) coordinate (b);
+        \draw[->,very thick,-stealth,draw=blue] (a)--node[right]{$\vec{v}_1$}([turn]90:1.65cm);
+        \draw[->,very thick,-stealth,draw=red] (a)--node[below]{$\vec{a}_c$}([turn]180:1.25cm);
+        \draw[->,very thick,-stealth,draw=blue] (b)--node[above]{$\vec{v}_2$}([turn]90:2cm);
+    \end{tikzpicture}
 \end{center}
+The centripetal acceleration is due to the change in the \underline{direction} of tangential velocity, whereas the tangential acceleration is due to any change in the \underline{magnitude} of the tangential velocity. The tangential and centripetal acceleration vectors $\vec{a}_t$ and $\vec{a}_c$ are always perpendicular to each other (the direction of $\vec{v}_t =$ the direction of $\vec{a}_t$).
+\vspace{1mm}\\
+We can assign a total linear acceleration vector to a point on a rotating rigid body or a particle executing circular motion at a radius $r$ from a fixed axis. The total linear acceleration vector $\vec{a}$ is the vector sum of the centripetal and tangential accelerations:
+\begin{equation}
+    \vec{a} = \vec{a}_c + \vec{a}_t
+\end{equation}
+The total linear acceleration vector in the case of nonuniform circular motion points at an angle between the centripetal and tangential acceleration vectors. Since $\vec{a}_c \perp \vec{a}_t$, the magnitude of the total linear acceleration is
+\begin{align*}
+    |\vec{a}| = \sqrt{a_c^2 + a_t^2}
+\end{align*}
+If the angular acceleration is zero, the total linear acceleration is equal to the centripetal acceleration
+\begin{center}
+    \begin{tikzpicture}[scale=0.7]
+        \draw[thick] (0,0) circle (2cm);
+        \draw[line width=0.5pt,dashed] ({2*cos(30)},{2*sin(30)})--(0,0);
+        \draw ({2*cos(30)},{2*sin(30)}) coordinate (a);
+        \draw ({-2*cos{70}},{2*sin(70)}) coordinate (b);
+        \draw[->,very thick,-stealth,draw=red] (a)--node[right]{$\vec{a}_t$}([turn]90:1.35cm);
+        \draw[->,very thick,-stealth,draw=red] (a)--node[below]{$\vec{a}_c$}([turn]180:1.25cm);
+        \draw[->,very thick,-stealth,draw=red] (a)--node[above,xshift=-0.5mm,yshift=-0.5mm]{$\vec{a}$}([turn]135:1.84cm);
+    \end{tikzpicture}
+\end{center}
+
+\noindent\bf{Relationship Between Rotational \& Translational Motion}
+\vspace{2mm}\\
+The relationship between the rotational and translational kinematic equations was mentioned above. The second relationship between rotational and translational motion relates linear and rotational variables in the special case of circular motion
+\begin{center}
+    \begin{tabularx}{0.4\textwidth}{ 
+        | >{\raggedright\arraybackslash}X
+        | >{\raggedright\arraybackslash}X  
+        | >{\raggedright\arraybackslash}X |}
+        \hline
+        Rotational & Translational & Relationship\\[2.5pt]
+        \hline
+        $\theta$ & $s$ & $\theta = \frac{s}{r}$\\[2.5pt]
+        \hline
+        $\omega$ & $v_t$ & $\omega = \frac{v_t}{r}$\\[2.5pt]
+        \hline
+        $\alpha$ & $a_t$ & $\alpha = \frac{a_t}{r}$\\[2.5pt]
+        \hline
+        & $a_c$ & $a_c = \frac{v_t^2}{r}$\\[2.5pt]
+        \hline
+    \end{tabularx}
+\end{center}
+
+\newpage
+\begin{shaded}
+    \underline{\bf{Example 10.7} Linear Acceleration of a Centrifuge}
+    \vspace{2mm}\\
+    A centrifuge has a radius of 20 cm and accelerates from a maximum rotation rate of 10,000 rpm to rest in 30 seconds under a constant angular acceleration, rotating counterclockwise. What is the magnitude of the total acceleration for a point at the tip  of the centrifuge at $t = 29.0$ s? What is the direction of the total acceleration vector?
+    \vspace{1mm}\\
+    Angular acceleration is:
+    \begin{align*}
+        \alpha = \frac{\omega - \omega_0}{t} = \frac{0 - (1 \cdot 10^4)2\pi/60.0\s(\rads)}{30.0\s} = -34.9\radss
+    \end{align*}
+    Tangential acceleration is $a_t = r\alpha$, therefore:
+    \begin{align*}
+        a_t = 0.2\text{ m}(-34.9\radss) = -7.0\mss
+    \end{align*}
+    The angular velocity at $t = 29.0$ s can be found using the equation $\omega = \omega_0 + \alpha t$:
+    \begin{align*}
+        \omega &= \bigg[(1.0 \cdot 10^4\text{ rpm})\bigg(\frac{2\pi}{60\s}\bigg)\bigg]\rads + \big(-34.9\radss\big)(29.0\s)\\
+        &= (1047.2 - 1012.71)\rads = 35.1\rads
+    \end{align*}
+    The tangential velocity $v_t$ is given by $v_t = r\omega$, therefore $v_t$ at $t = 29.0$ s is:
+    \begin{align*}
+        v_t = 0.2\m(35.1\rads) = 7.0\ms
+    \end{align*}
+    The centripetal acceleration $a_c$ at $t = 29.0\s$ can now be calculated using $a_c = \frac{v^2}{r}$, therefore:
+    \begin{align*}
+        a_c = \frac{(7.0\ms)^2}{0.2\m} = 245.0 \mss
+    \end{align*}
+    Since the two acceleration vectors are perpendicular to each other, the magnitude of the total linear acceleration is:
+    \begin{align*}
+        |\vec{a}| &= \sqrt{a_c^2 + a_t^2} = \sqrt{(245.0\mss)^2 + (-7.0\mss)^2}\\
+        &= 245.1\mss
+    \end{align*}
+    Since the centrifuge has a negative angular acceleration, it is slowing down. The angle of the total acceleration vector with respect to the centripetal acceleration vector is:
+    \begin{align*}
+        \theta = \tan^{-1}\frac{-7.0\mss}{245.0\mss} = -1.6\degree
+    \end{align*}
+\end{shaded}
 
 \end{document}
