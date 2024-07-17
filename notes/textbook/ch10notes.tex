@@ -33,9 +33,12 @@
 \newcommand\rad{\text{ rad}}
 \newcommand\s{\text{ s}}
 \newcommand\m{\text{ m}}
+\newcommand\J{\text{ J}}
 \newcommand\ms{\text{ ms}^{-1}}
 \newcommand\mss{\text{ ms}^{-2}}
-\newcommand\kgms{\text{kg\;ms}^{-1}}
+\newcommand\kg{\text{ kg}}
+\newcommand\kgms{\text{ kg\;ms}^{-1}}
+\newcommand\kgmm{\text{ kg\;m}^{-2}}
 \def\centerarc[#1](#2)(#3:#4:#5){\draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5)}
 % Syntax: \centerarc[draw options] (center) (initial angle:final angle:radius);
 
@@ -628,6 +631,98 @@ The relationship between the rotational and translational kinematic equations wa
     \begin{align*}
         \theta = \tan^{-1}\frac{-7.0\mss}{245.0\mss} = -1.6\degree
     \end{align*}
+\end{shaded}
+\newpage
+
+\subsection{Moment of Inertia and Rotational Kinetic Energy}
+This section introduces two new quantities that are helpful for analyzing properties of rotating objects: moment of inertia and rotational kinetic energy
+\vspace{2mm}\\
+\bf{Rotational Kinetic Energy}
+\vspace{2mm}\\
+The energy associated with rotational motion is the same as kinetic energy in translational motion however, because kinetic energy is given by $K = \frac{1}{2}mv^2$, and velocity is different for every point on a rotating body, it makes sense to write kinetic energy in terms of $\omega$. For a single particle rotating around a fixed axis, we relate the angular velocity to the magnitude of the translational velocity using the relation $v_t = \omega r$, where $r$ is the distance of the particle from the axis of rotation and $v_t$ is its tangential velocity. Substituting into the equation for kinetic energy gives:
+\begin{align*}
+    K = \frac{1}{2}mv_t^2 = \frac{1}{2}m(\omega r)^2 = \frac{1}{2}(mr^2)\omega^2
+\end{align*}
+In the case of a rigid rotating body, the total body can be divided up into a large number of smaller masses, each with mass $m_j$ and distance from the axis of rotation $r_j$, such that the total mass of the body $M$ is equal to the sum of the original masses $M = \sum_{j}m_j$. Each smaller mass has a tangential velocity $v_j$. The total kinetic energy of the rigid rotating body is:
+\begin{align*}
+    K = \sum_{j}\frac{1}{2}m_jv^2_j = \sum_{j}\frac{1}{2}m_j(r_j\omega_j)^2
+\end{align*}
+Since $\omega_j = \omega$ for all masses:
+\begin{equation}
+    K = \frac{1}{2}\bigg(\sum_{j}m_jr^2_j\bigg)\omega^2 
+\end{equation}
+Like translational kinetic energy, the units of this equation are joules (J)
+\vspace{2mm}\\
+\bf{Moment of Inertia}
+\vspace{2mm}\\
+The quantity $\sum\limits_j m_jr^2_j$ is the counterpart for mass in the equation for rotational kinetic energy. This quantity is called the moment of inertia $I$ and has units of$\kgmm$
+\begin{equation}
+    I = \sum_{j}m_jr^2_j
+\end{equation}
+For now the expression is left in summation form, representing the moment of inertia of a system of point particles rotating about a fixed axis. The moment of inertia of a single point particle about a fixed axis is simply $mr^2$.
+\vspace{1mm}\\
+The moment of inertia is the quantitative measure of rotational inertia, just as in translational motion, mass is the quantitative measure of linear inertia - that is, the more massive an object is, the more inertia it has, and the greater is its resistance to change in linear velocity. Similarly, the greater the moment of inertia of a rigid body or system of particles, the greater its resistance to change in angular velocity about a fixed axis of rotation. Rigid bodies and systems of particles with more mass concentrated at a greater distance from the axis of rotation have greater moments of inertia than bodies/systems of the same mass bt concentrated near the axis of rotation. Substituting equation 17 into equation 16, the expression for the kinetic energy of a rotating rigid body becomes:
+\begin{equation}
+    K = \frac{1}{2}I\omega^2
+\end{equation}
+The kinetic energy of a rotating rigid body is directly proportional to the moment of inertia and the square of the angular velocity. The rotational and translational quantities for kinetic energy are summarized below:
+\begin{center}
+    \begin{tabularx}{0.4\textwidth}{ 
+        | >{\raggedright\arraybackslash}X 
+        | >{\raggedright\arraybackslash}X |}
+        \hline
+        Rotational & Translational\\
+        \hline
+        $\displaystyle I = \sum_{j}m_jr^2_j$ & $m$\\
+        \hline
+        $\displaystyle K = \frac{1}{2}I\omega^2$ & $\displaystyle K = \frac{1}{2}mv^2$\\
+        \hline
+    \end{tabularx}
+\end{center}
+
+\newpage
+\begin{shaded}
+    \underline{\bf{Example 10.8:} Moment of Inertia of a System of Particles}
+    \vspace{2mm}\\
+    Six small washers are spaced 10 cm apart on a rod of negligible mass and 0.5 m in length. The mass of each washer is 20 g. The rod rotates about an axis located at 25 cm as shown.
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[line width=0.5pt] (0,-0.5)--(0,0.5);
+            \draw[-,thick] (-0.75,0)--(0.75,0);
+            \filldraw (-0.75,0) circle (0.05);
+            \filldraw (-0.45,0) circle (0.05);
+            \filldraw (0.75,0) circle (0.05);
+            \filldraw (0.45,0) circle (0.05);
+            \filldraw (0.15,0) circle (0.05);
+            \filldraw (-0.15,0) circle (0.05);
+            \draw[-] (-0.75,-0.125)--node[below]{10 cm}(-0.45,-0.125);
+            \centerarc[->,draw=black](0,0.5)(120:420:0.1667) node[above]{Rotation axis};
+        \end{tikzpicture}
+    \end{center}
+    \begin{enumerate}
+        \item[(a)] What is the moment of inertia of the system?
+        \vspace{1mm}\\
+        Use the definition of moment of inertia for a system of particles: $I = \sum\limits_j m_jr^2_j$
+        \begin{align*}
+            I &= (0.02\kg)\big[2(0.25\m)^2 + 2(0.15\m)^2 + 2(0.05\m)^2\big]\\
+            &= 3.5 \cdot 10^{-3}\kgmm
+        \end{align*}
+        \item[(b)] If the two washers closest to the axis are removed, what is the moment of inertia of the remaining four washers?
+        \vspace{1mm}\\
+        Repeat the steps from part (a):
+        \begin{align*}
+            I &= (0.02\kg)\big[2(0.25\m)^2 + 2(0.15\m)^2\big]\\
+            &= 3.4 \cdot 10^{-3}\kgmm
+        \end{align*}
+        \item[(c)] If the system with six washers rotates at 5 rev/s, what is its rotational kinetic energy?
+        \vspace{1mm}\\
+        Insert the result from part (a) into the expression for rotational kinetic energy:
+        \begin{align*}
+            K &= \frac{1}{2}I\omega^2\\
+            &= \frac{1}{2}(3.5 \times 10^{-3}\kgmm)\big[5.0(2\pi\rads)\big]^2\\
+            &= 1.73\J
+        \end{align*}
+    \end{enumerate}
 \end{shaded}
 
 \end{document}
