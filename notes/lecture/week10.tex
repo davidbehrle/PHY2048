@@ -207,7 +207,41 @@ Comparison of Force and Torque
             a &= \frac{T - m_bg}{m_b}
         \end{align*}
     \end{minipage}
+    \begin{align*}
+        \tau = r \times F
+    \end{align*}
     
 \end{shaded}
+
+\begin{shaded}
+    \underline{\bf{Example:} Dumbell}\\
+    \begin{tikzpicture}
+        \filldraw[black] (-1.5,0) circle (0.4);
+        \filldraw[black] (1.5,0) circle (0.4);
+        \draw[line width=1pt] (-1.1,0)--(1.1,0);
+        \draw[->,thick,-latex,draw=red] (0,0)--(0,-1.2) node[below]{$F_c = 2F$};
+        \draw[->,thick,-latex,draw=red] (-1.1,0)--(-1.1,0.8) node[above]{$F_a = F$};
+        \draw[->,thick,-latex,draw=red] (0.55,0)--node[right]{$135\degree$}(0,0.55) node[above]{$F_b = F$};
+        \draw (-{cos(60)},{cos(60)}) coordinate (a);
+    \end{tikzpicture}
+    \begin{enumerate}
+        \item[(a)] Find the moment of inertia of the dumbell
+        \begin{align*}
+            I &= I_{b - left} + I_r + I_{b - right}\\
+            &= (I_b + M_b(R + \sfrac{L}{2})^2) + \frac{1}{12}M_rL^2 + (I_b + M_b(R + \sfrac{L}{2})^2)\\
+            &= 2\bigg(\frac{2}{5}M_bR^2 + M_b(R + \sfrac{L}{2})^2\bigg) + \frac{1}{12}M_rL^2\\
+        \end{align*}
+        \item[(b)] Consider the applied forces as shown. Find the angular acceleration
+        \begin{align*}
+            \tau_z &= \tau_a + \tau_b + \tau_c\\
+            &= \Big(-\frac{1}{2}FL\sin(90\degree)\Big) + \Big(\frac{1}{4}FL\sin(45\degree)\Big) + 0\\
+            &= \Big(\frac{\sqrt{2}}{8} - \frac{1}{2}\Big)FL\\
+            \tau_z &= Ia_z\\
+            A_z &= \frac{\tau_z}{I} = \frac{\Big(\frac{\sqrt{2}}{8} - \frac{1}{2}\Big)FL}{2\bigg(\frac{2}{5}M_bR^2 + M_b(R + \sfrac{L}{2})^2\bigg) + \frac{1}{12}M_rL^2}
+        \end{align*}
+    \end{enumerate}
+\end{shaded}
+
+
 
 \end{document}
