@@ -40,6 +40,9 @@
 \newcommand\kg{\text{ kg}}
 \newcommand\kgms{\text{ kg\;ms}^{-1}}
 \newcommand\kgmm{\text{ kg\;m}^{-2}}
+\newcommand{\AxisRotator}[1][rotate=0]{%
+    \tikz [x=0.25cm,y=0.60cm,line width=.2ex,-stealth,#1] \draw (0,0) arc (-150:150:1 and 1);%
+}
 \def\centerarc[#1](#2)(#3:#4:#5){\draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5)}
 % Syntax: \centerarc[draw options] (center) (initial angle:final angle:radius);
 
@@ -822,6 +825,285 @@ The kinetic energy of a rotating rigid body is directly proportional to the mome
             h &= \frac{(19.28\ms)^2}{2(9.8\mss)} = 18.97\m
         \end{align*}
     \end{enumerate} 
+\end{shaded}
+\newpage
+
+\subsection{Calculating Moments of Inertia}
+This section covers how to calculate the moment of inertia for several standard types of objects, as well as how to use known moments of inertia to find the moment of inertia for a shifted axis or for a compound object.
+\vspace{2mm}\\
+\bf{Moment of Inertia}
+\vspace{1mm}\\
+The moment of inertia $I$ of an object is defined to be $I = \sum\limits_{i}m_ir^2_i$ for all the point masses that make up the object. Because $r$ is the distance to the axis of rotation for each piece of mass that makes up the object, the moment of inertia depends on the chosen axis. Take a simple example of two masses at the end of a massless (negligibly small mass) rod and calculate the moment of inertia about two different axes. The summation over the masses is simple because the two masses can be approximated as point masses, and the sum has only two terms.\vspace{1mm}\\
+In the case with the axis in the center of the barbell, each of the two masses $m$ is a distance $R$ away from the axis giving a moment of inertia of
+\begin{align*}
+    I_1 = mR^2 + mR^2 = 2mR^2
+\end{align*}
+In the case with the axis at the end of the barbell (passing through one of the masses) the moment of inertia is:
+\begin{align*}
+    I_2 = m(0)^2 + m(2R)^2 = 4mR^2
+\end{align*}
+From this result we can conclude that it is twice as hard to rotate the barbell about the end than about its center.\vspace{1mm}\\
+%%% Add figure?? %%%
+This example uses two point masses, making the sum easy to calculate. In the derivation of equation 17, each piece had the same magnitude of velocity, meaning the whole piece had to have a single distance $r$ to the axis of rotation. This is only possible taking an infinitesimally small piece of mass $dm$. This suggests that the moment of inertia can be written by evaluating an integral over infinitesimal masses rather than doing a discrete sum over finite masses:
+\begin{equation}
+    I = \sum_{i}m_ir_i^2\ \boldsymbol{\to}\ I = \int r^2dm
+\end{equation}
+This is all that is needed to generalize the equation for complex chapes
+\vspace{2mm}\\
+\bf{A Uniform Thin Rod With an Axis Through The Center}
+\vspace{2mm}\\
+Consider a uniform ($\rho$ \& shape) thin rod of mass $M$ and length $L$ as shown. We want a thin rod so that we can assume the cross-sectional area of the rod is small and the rod can be thought of as a string of masses along a 1D straight line. In this example, the axis of rotation is perpendicular to the rod and passes through the midpoint. The axes are oriented so that the $z$ axis is the axis of rotation and the $x$ axis passes through the length of the rod.
+\begin{center}
+    \begin{tikzpicture}[scale=2]
+        \draw[->,thick,-latex] (-1.25,0)--(1.25,0) node[right]{$x$};
+        \draw[->,-latex] (0,-0.5)--node[above,yshift=3mm]{\AxisRotator[x=0.1cm,y=0.4cm,rotate=-90]}(0,0.5) node[above]{$z$};
+        \node[above] at (-0.15,0.3){$\omega$};
+        \draw[line width=1.75pt,draw=green!40!blue] (-1,0)--(1,0);
+        \draw[line width=1.75pt,draw=black!10!orange] (0.6,0)--node[above]{$dm$}(0.675,0);
+        \node[below] at (-1,0){$-\sfrac{L}{2}$};
+        \node[below] at (1,0){$\sfrac{L}{2}$};
+        \draw[line width=0.5pt] (0.6,0.04)--(0.6,-0.04);
+        \draw[line width=0.5pt] (0.675,0.04)--(0.675,-0.04);
+        \draw[->,-stealth,thick,draw=white!30!green!50!blue] (0,-0.125)--node[below]{$x$}(0.6,-0.125);
+        \draw[->,-latex] (0.85,-0.4)--(0.63625,-0.075);
+        \node[below,xshift=1mm] at (0.85,-0.4){$dx$};
+    \end{tikzpicture}
+\end{center}
+We define $dm$ to be a small element of the mass making up the rod. The moment of inertia integral is an integral over the mass distribution. However, we know how to integrate over space, not mass and therefore need to find a way to relate mass to spatial variables. This is done using the linear mass density $\lambda$ of the object, which is the mass per unit length. Since the mass and density of the object are both uniform:
+\begin{align*}
+    \lambda = \frac{m}{L}\ \boldsymbol{\to}\ m = \lambda L
+\end{align*}
+Since $\lambda$ is constant, taking the differential of each side of the equation gives:
+\begin{align*}
+    dm = d(\lambda L) = \lambda(dL)
+\end{align*}
+This is where the choice to orient the rod along the $x$ axis becomes helpful. A piece of the rod $dl$ lies completely along the $x$ axis and has a length $dx$, in this situation $dL = dx$. Therefore $dm = \lambda(dx)$, giving an integration variable that can be used. The distance of each piece of mass $dm$ from the axis is given by the variable $x$, putting this all together gives:
+\begin{align*}
+    I = \int r^2dm = \int x^2dm = \int x^2\lambda dx 
+\end{align*}
+The last step is to be careful about the limits of integration. The rod extends from $x = -\sfrac{L}{2}$ to $x = \sfrac{L}{2}$, since the axis is in the middle of the rod at $x = 0$. This gives:
+\begin{align*}
+    I &= \int\limits_{-\sfrac{L}{2}}^{\sfrac{L}{2}} x^2\lambda dx = \lambda\frac{x^3}{3}\Bigg\vert_{-\sfrac{L}{2}}^{\sfrac{L}{2}} = \lambda\bigg(\frac{1}{3}\bigg)\Bigg[\bigg(\frac{L}{2}\bigg)^3 - \bigg(-\frac{L}{2}\bigg)^3\Bigg]\\
+    &= \lambda\bigg(\frac{1}{3}\bigg)\frac{L^3}{8}(2) = \frac{M}{L}\bigg(\frac{1}{3}\bigg)\frac{L^3}{8}(2) = \frac{1}{12}ML^2
+\end{align*}
+\newpage
+\noindent\bf{A Uniform Thin Rod With Axis at The End}
+\vspace{2mm}\\
+Now consider the same uniform thin rod of mass $M$ and length $L$ this time with the axis of rotation at the end of the rod. The quantity $dm$ is again defined to be a small element of mass making up the rod, just as before:
+\begin{align*}
+    I = \int r^2dm = \int x^2dm = \int x^2\lambda dx
+\end{align*}
+However, this time there are different limits of integration. The rod extends from $x = 0$ to $x = L$, since the axis is at the end of the rod at $x = 0$. Therefore:
+\begin{align*}
+    I &= \int_{0}^{L}x^2\lambda dx = \lambda\frac{x^3}{3} \Bigg\vert_0^L = \lambda \bigg(\frac{1}{3}\bigg)\Big[(L)^3 - (0)^3\Big]\\
+    &= \lambda\bigg(\frac{1}{3}\bigg)L^3 = \frac{M}{L}\bigg(\frac{1}{3}\bigg)L^3 = \frac{1}{3}ML^2
+\end{align*}
+Note that the rotational inertia of the rod about its endpoint is larger than the rotational inertia about its center by a factor of four.
+\begin{center}
+    \begin{tikzpicture}[scale=2]
+        \draw[->,thick,-latex] (-1.25,0)--(1.25,0) node[right]{$x$};
+        \draw[->,-latex] (-1,-0.5)--node[above,yshift=3mm]{\AxisRotator[x=0.1cm,y=0.4cm,rotate=-90]} (-1,0.5) node[above]{$z$};
+        \node[above] at (-1.15,0.3){$\omega$};
+        \draw[line width=1.75pt,draw=green!40!blue] (-1,0)--(1,0);
+        \draw[line width=1.75pt,draw=black!10!orange] (0.6,0)--node[above]{$dm$}(0.675,0);
+        \node[below] at (-1.1,0){$0$};
+        \node[below] at (1,0){$L$};
+        \draw[line width=0.5pt] (0.6,0.04)--(0.6,-0.04);
+        \draw[line width=0.5pt] (0.675,0.04)--(0.675,-0.04);
+        \draw[->,-stealth,thick,draw=white!30!green!50!blue] (-1,-0.125)--node[below]{$x$}(0.6,-0.125);
+        \draw[->,-latex] (0.85,-0.4)--(0.63625,-0.075);
+        \node[below,xshift=1mm] at (0.85,-0.4){$dx$};
+    \end{tikzpicture}
+\end{center}
+\bf{Parallel-Axis Theorem}
+\vspace{2mm}\\
+The parallel-axis theorem provides a simpler method for determining the moment of inertia for a rod about any axis parallel to the axis through the center of mass.
+\vspace{1mm}\\
+Let $m$ be the mass of an object and let $d$ be the distance from an axis through the object's center of mass to a new axis:
+\begin{equation}
+    I_{pa} = I_{cm} + md^2
+\end{equation}
+Applying this to the examples solved above:
+\begin{align*}
+    I_{end} = I_{cm} + md^2 = \frac{1}{12}mL^2 + m\bigg(\frac{L}{2}\bigg)^2 = \bigg(\frac{1}{12} + \frac{1}{4}\bigg)mL^2 = \frac{1}{3}mL^2
+\end{align*}
+This result agrees with the more lengthy calculation above.
+\vspace{2mm}\\
+\bf{A Uniform Thin Disk About an Axis Through The Center}
+\vspace{2mm}\\
+Integrating to find the moment of inertia of a 2D object is a little bit trickier however, one shape is commonly done at this level of study, a uniform thin disk about an axis through its center
+\begin{center}
+    \begin{minipage}{0.4\textwidth}
+        \begin{tikzpicture}[scale=2]
+            \draw[thick] (0,0) circle (1);
+            \draw[ultra thick,draw=black!10!orange] (0,0) circle (0.5);
+            \filldraw[black] (0,0) circle (0.65pt);
+            \node at (-0.1,0.1){$z$};
+    
+            \draw[<->,latex-latex] (-1.25,0)--(1.25,0) node[right]{$x$};
+            \draw[<->,latex-latex] (0,-1.25)--(0,1.25) node[above]{$y$};
+    
+            \draw[->,-latex] (0,0)--node[above,yshift=0.5mm,xshift=0.5mm]{$r$}(-{cos(45)},-{sin(45)});
+            \draw[->,-latex] (0,0)--node[above]{$r$}({0.5*cos(45)},-{0.5*sin(45)});
+    
+            \draw[->,-latex] ({0.3*cos(45)},{0.3*sin(45)})--({0.47*cos(45)},{0.47*sin(45)});
+            \draw[->,-latex] ({0.7*cos(45)},{0.7*sin(45)})--node[above,xshift=-1mm,yshift=1mm]{$dr$}({0.53*cos(45)},{0.53*sin(45)});
+        \end{tikzpicture}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{tikzpicture}[scale=2]
+            \draw[ultra thick,draw=black!10!orange] (0,0) ellipse (1 and 0.5);
+            
+            \draw[<->,latex-latex] (-1.25,0)--(1.25,0) node[right]{$y$};
+            \draw[->,-latex] (0,-0.75)--(0,1) node[above,yshift=-1cm]{\AxisRotator[x=0.15cm,y=0.5cm,rotate=-90]} node[above]{$z$};
+            \draw[<->,latex-latex] ({-0.8*cos(60)},{-0.8*sin(60)})--({0.8*cos(60)},{0.8*sin(60)}) node[above,xshift=0.75mm]{$x$};
+
+            \draw[->,thick,-latex] (0,0)--node[below,xshift=1mm,yshift=0.5mm]{$r$}({0.75*cos(30)},{0.75*sin(30)}) node[right,yshift=2.5mm]{$dm$};
+            \node at (0,-1){};
+        \end{tikzpicture}        
+    \end{minipage}
+\end{center}
+Since the disk is think, we can take the mass as distributed entirely in the $xy$ plane. Starting again with the relationship for the surface mass density, which is the mass per unit surface area. Since it is uniform, the surface mass density $\sigma$ is constant:
+\begin{align*}
+    \sigma = \frac{m}{A} \to \sigma A = m\text{, so: } dm = \sigma(dA)
+\end{align*}
+Now we use a simplification for the area. The area can be thought of as made up of a series of thin rings, where each ring is a mass increment $dm$ of radius $r$ equidistant from the axis. The infinitesimal area of each ring $dA$ is therefore given by the length of each ring ($2\pi r$) times the infinitesimal width of each ring $dr$:
+\begin{align*}
+    A = \pi r^2,\ dA = d(\pi r^2) = \pi dr^2 = 2\pi rdr
+\end{align*}
+\newpage\noindent
+The full area of the disk is then made up from adding all the thin rings with a radius range from 0 to $R$. This radius range then becomes our limits of integration for $dr$, we integrate from $r = 0$ to $r = R$. Putting this together gives:
+\begin{align*}
+    I &= \int_{0}^{R} r^2\sigma(2\pi r)dr = 2\pi\sigma\int_{0}^{R}r^3dr = 2\pi\sigma\frac{r^4}{4}\Bigg\vert_0^R = 2\pi\sigma\bigg(\frac{R^4}{4} - 0\bigg)\\
+    &= 2\pi\frac{m}{A}\bigg(\frac{R^4}{4}\bigg) = 2\pi\frac{m}{\pi R^2}\bigg(\frac{R^4}{4}\bigg) = \frac{1}{2}mR^2
+\end{align*}
+\vspace{2mm}\\
+\bf{Calculating The Moment of Inertia For Compound Objects}\vspace{2mm}\\
+Now consider a compound object like a disk at the end of a thin rod. This cannot be easily integrated to find the moment of inertia because it is not a uniformly shaped object. However, going back to the initial definition of moment of inertia as a summation, we can reason that a compound object's moment of inertia can be found from the sum of each part of the object:
+\begin{equation}
+    I_{tot} = \sum_{i} I_i
+\end{equation}
+It is important to note that the moments of inertia of the objects in equation 21 are about a common axis. In the case of this object, that would be a rod of length $L$ rotating about its end, and a thin disk of radius $R$ rotating about an axis shifted off the center by a distance $L + R$, where $R$ is the radius of the disk. We define the mass of the rod to be $m_r$ and the mass of the disk to be $m_d$
+\begin{center}
+    \begin{tikzpicture}[scale=2]
+        \draw[line width=2.5pt,draw=black!10!green!40!blue] (0,0)--(0,1.5);
+        \filldraw[black!30] (0,-0.4) circle(0.4);
+        \draw[black!60,very thick] (0,-0.4) circle (0.4);
+        \draw[->,thick,-latex] (0,-0.4)--node[above,xshift=1mm]{$R$}({0.4*cos(45)},{-0.4*sin(45) - 0.4});
+        \filldraw[black!10!red] (0,1.4) circle (1.5pt) node[text=black,left,xshift=-0.5mm]{$A$};
+        \draw[<->,very thick,latex-latex] (0.35,0)--node[fill=white]{$L$}(0.35,1.4);
+        \draw[line width=1pt] (0.3,0)--(0.4,0);
+        \draw[line width=1pt] (0.3,1.4)--(0.4,1.4);
+    \end{tikzpicture}
+\end{center}
+The moment of inertia of the rod is simply $\frac{1}{3}m_rL^2$, but to find the moment of inertia of the disk about the axis shown, parallel-axis theorem must be used. The moment of inertia of the disk about its center ia $\frac{1}{2}m_dR^2$, applying the parallel-axis theorem $I_{pa} = I_{cm} + md^2$ to find
+\begin{align*}
+    I_{pa} = \frac{1}{2}m_dR^2 + m_d(L + R)^2
+\end{align*}
+\bf{Applying Moment of Inertia Calculations to Solve Problems}
+\begin{shaded}
+    \underline{\bf{Example 10.11:} Person on a Merry-Go-Round}
+    \vspace{2mm}\\
+    A 25 kg child stands a distance $r = 1.0\m$ from the axis of a rotating merry-go-round. The merry-go-round can be approximated as a uniform solid disk with a mass of 500 kg and radius of 2.0 m. Find the moment of inertia of the system
+    \vspace{1mm}\\
+    The mass and distance to the axis of rotation of the child as well as the mass and radius of the merry-go-round are given. Since the mass and size of the child are much smaller than the merry-go-round, we can approximate the child as a point mass\\
+    $m_c = 25\kg,\ r_c = 1.0\m,\ m_m = 500\kg,\ r_m = 2.0\m,\ $ The goal is to find $\sum\limits_{i}I_i$
+    \vspace{1mm}\\
+    For the child, $I_c = m_cr^2$, and for the merry-go-round, $I_m = \frac{1}{2}m_mr^2$, therefore
+    \begin{align*}
+        I_{tot} &= I_c + I_m\\
+        &= 25(1)^2 + \frac{1}{2}(500)(2)^2 = 25 + 1000\\
+        &= 1025\kg
+    \end{align*}
+    The value should be close to the moment of inertia of the merry-go-round by itself because it has much more mass distributed away from the axis than the child does.
+\end{shaded}
+
+\begin{shaded}
+    \underline{\bf{Example 10.12:} Rod and Solid Sphere}
+    \vspace{2mm}\\
+    Find the moment of inertia of the rod and solid sphere combination about the two axes as shown below. The rod has a length of 0.5 m and a mass of 2.0 kg. The radius of the sphere is 20.0 cm and has a mass of 1.0 kg.
+    \begin{center}
+        \begin{tikzpicture}[scale=2]
+            \draw[line width=2.5pt,draw=black!10!green!40!blue] (0,0)--(0,1.5);
+            \filldraw[black!30] (0,-0.4) circle(0.4);
+            \draw[black!60,very thick] (0,-0.4) circle (0.4);
+            \draw[->,thick,-latex] (0,-0.4)--node[above]{$R$}(0.4,-0.4);
+            \filldraw[black!10!red] (0,1.4) circle (1.5pt) node[text=black,left,xshift=-0.5mm]{$A$};
+            \draw[<->,very thick,latex-latex] (0.35,0)--node[fill=orange!15]{$L$}(0.35,1.4);
+            \draw[line width=1pt] (0.3,0)--(0.4,0);
+            \draw[line width=1pt] (0.3,1.4)--(0.4,1.4);
+            \node at (0,-1){(a)};
+        \end{tikzpicture}
+        \hspace{5cm}
+        \begin{tikzpicture}[scale=2]
+            \draw[line width=2.5pt,draw=black!10!green!40!blue] (0,0)--(0,1.5);
+            \filldraw[black!30] (0,-0.4) circle(0.4);
+            \draw[black!60,very thick] (0,-0.4) circle (0.4);
+            \draw[->,thick,-latex] (0,-0.4)--node[above]{$R$}(0.4,-0.4);
+            \filldraw[black!10!red] (0,0) circle (1.5pt) node[text=black,left,yshift=2.5mm,xshift=-0.5mm]{$A$};
+            \draw[<->,very thick,latex-latex] (0.35,0)--node[fill=orange!15]{$L$}(0.35,1.4);
+            \draw[line width=1pt] (0.3,0)--(0.4,0);
+            \draw[line width=1pt] (0.3,1.4)--(0.4,1.4);
+            \node at (0,-1){(b)};
+        \end{tikzpicture}
+    \end{center}
+    In (a), the center of mass of the sphere is located a distance $L + R$ from the axis of rotation. In (b), the center of mass is located a distance $R$ from the axis of rotation. In both cases, the moment of inertia of the rod is about an axis at one end.
+    \begin{enumerate}
+        \item For axis (a), the moment of inertia is:
+        \begin{align*}
+            I_{tot} &= \sum_{i}I_i = I_r + I_s\\
+            I_s &= I_{cm} + m_s(L + R)^2 = \frac{2}{5}m_sR^2 + m_s(L + R)^2\\
+            I_{tot} &= I_r + I_s = \frac{1}{3}m_rL^2 + \frac{2}{5}m_sR^2 + m_s(L + R)^2\\
+            &= \frac{1}{3}(2.0\kg)(0.5\m)^2 + \frac{2}{5}(1.0\kg)(0.2\m)^2 + (1.0\kg)(0.5\m + 0.2\m)^2\\
+            &= (0.167 + 0.016 + 0.490)\kgmm = 0.673\kgmm
+        \end{align*}
+        \item[(b)] For axis (b), the moment of inertia is:
+        \begin{align*}
+            I_s &= \frac{2}{5}m_sR^2 + m_sR^2\\
+            I_{tot} &= I_r + I_s = \frac{1}{3}m_rL^2 + \frac{2}{5}m_sR^2 + m_sR^2\\
+            &= \frac{1}{3}(2.0\kg)(0.5\m)^2 + \frac{7}{5}(1.0\kg)(0.2\m)^2\\
+            &= (0.167 + 0.056)\kgmm = 0.223\kgmm
+        \end{align*}
+    \end{enumerate}
+\end{shaded}
+
+\newpage
+\begin{shaded}
+    \underline{\bf{Example 10.13:} Angular Velocity of a Pendulum}
+    \vspace{2mm}\\
+    A pendulum in the shape of a rod is released from rest at an angle of $30\degree$. It has a length of 30 cm and a mass of 300 g. What is its angular velocity $\omega$ at its lowest point?
+    \begin{center}
+        \begin{tikzpicture}[scale=2]
+            \draw[line width=1pt,dashed] (0,1)--(0,-1.1);
+            \draw[<->,thick,latex-latex] (-0.25,0)--node[fill=orange!15,xshift=-8.9mm]{$h_{cm} = \sfrac{L}{2}\cos(\theta)$} (-0.25,1);
+            \draw[line width=1pt] (-0.3,0)--(-0.2,0);
+            \draw[line width=1pt] (-0.3,1)--(-0.2,1);
+            \draw[line width=2pt] (0,1)--node[right]{$L = 30$ cm}({1.7*cos(60)},{ -1*sin(60)});
+            \node at (1.05,-0.2){$m = 300$ g};
+            \centerarc[<-,red,very thick,latex-](0,1)(289:300:2.1);
+        \end{tikzpicture}
+    \end{center}
+    Use conservation of energy to solve the problem. At the point of release, the pendulum has gravitational potential energy which is determined from the height of the center of mass above the lowest point in the swing. At the bottom of the swing, all of the gravitational potential energy is converted into rotational kinetic energy.
+    \vspace{1mm}\\
+    The change in Potential energy is equal to the change in rotational kinetic energy, $\Delta U + \Delta K = 0$\\
+    At the top of the swing, $\displaystyle U = mgh_{cm} = mg\frac{L}{2}$. At the bottom of the swing, $\displaystyle U = mg\frac{L}{2}$ with respect to the lowest point\\
+    At the top of the swing, the rotational kinetic energy is $K = 0$. At the bottom of the swing $K = \frac{1}{2}I\omega^2$, therefore:
+    \begin{align*}
+        \Delta U + \Delta K = 0\ \boldsymbol{\to}\ \Big(mg\frac{L}{2}\big(1 - \cos(\theta)\big) - 0\Big) + \Big(0 - \frac{1}{2}I\omega^2\Big) = 0
+    \end{align*}
+    Or,
+    \begin{align*}
+        \frac{1}{2}I\omega^2 = mg\frac{L}{2}\big(1 - \cos(\theta)\big)
+    \end{align*}
+    Solving for $\omega$ gives:
+    \begin{align*}
+        \omega = \sqrt{mg\frac{L}{I}\big(1 - \cos(\theta)\big)} =\sqrt{mg\frac{L}{\sfrac{1}{3}mL^2}\big(1 - \cos(\theta)\big)} = \sqrt{g\frac{3}{L}\big(1 - \cos(\theta)\big)}
+    \end{align*}
+    Plugging in the known values gives:
+    \begin{align*}
+        \omega = \sqrt{9.8\mss\frac{3}{0.3\m}\big(1 - \cos(30\degree)\big)} = 3.6\rads
+    \end{align*}
+    Note that the angular velocity of the pendulum does not depend on its mass
 \end{shaded}
 
 \end{document}
