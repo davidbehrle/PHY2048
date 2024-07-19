@@ -16,6 +16,7 @@
 \usepackage{xfrac}
 \usepackage[most]{tcolorbox}
 \usepackage{fix-cm}
+\usepackage{cancel}
 \usepackage[margin=0.5in]{geometry}
 \usetikzlibrary{quotes,angles}
 \usetikzlibrary{decorations.pathreplacing}
@@ -727,7 +728,8 @@ The kinetic energy of a rotating rigid body is directly proportional to the mome
         \end{align*}
     \end{enumerate}
 \end{shaded}
-\bf{Applying Rotational Kinetic Energy}
+\newpage
+\noindent\bf{Applying Rotational Kinetic Energy}
 \begin{shaded}
     \underline{\bf{Problem Solving Strategy:} Rotational Energy}
     \begin{enumerate}
@@ -741,7 +743,6 @@ The kinetic energy of a rotating rigid body is directly proportional to the mome
     \end{enumerate}
 \end{shaded}
 
-\newpage
 \begin{shaded}
     \underline{\bf{Example 10.9:} Calculating Helicopter Energies}
     \vspace{2mm}\\
@@ -764,7 +765,63 @@ The kinetic energy of a rotating rigid body is directly proportional to the mome
             &= 5.26 \cdot 10^5\J
         \end{align*}
         \item[(b)] Calculate the translational kinetic energy of the helicopter when it flies at 20.0$\ms$, and compare it with the rotational energy in the blades
+        \vspace{1mm}\\
+        Entering the given values into the equation for translational kinetic energy gives:
+        \begin{align*}
+            K &= \frac{1}{2}mv^2\\
+            &= \frac{1}{2}(10^3\kg)(20\ms)^2\\
+            &= 2.00 \cdot 10^5\J
+        \end{align*}
+        To compare kinetic energies take the ratio of translational kinetic energy to rotational kinetic energy:
+        \begin{align*}
+            \frac{2.00 \cdot 10^5\J}{5.26 \cdot 10^5\J} = 0.380
+        \end{align*}
+        This tells us that most of the energy of the helicopter is in its spinning blades
     \end{enumerate}
+\end{shaded}
+
+\begin{shaded}
+    \underline{\bf{Example 10.10:} Energy in a Boomerang}
+    \vspace{2mm}\\
+    A person hurls a boomerang into the air with a velocity of 30.0$ms$ at an angle of 40.0$\degree$ with respect to the horizontal. It has a mass of 1.0 kg and it rotating at 10.0 rev/s. The moment of inertia of the boomerang is given as $I = \frac{1}{12}mL^2$ where $L = 0.7\m$. 
+    \begin{enumerate}
+        \item[(a)] What is the total energy of the boomerang when it leaves the hand?
+        \vspace{1mm}\\
+        The total kinetic energy of the boomerang is: $K_{tot} = K_R + K_T$\\
+        The moment of inertia is: $\displaystyle I = \frac{1}{12}mL^2 = \frac{1}{12}(1.0\kg)(0.7\m)^2 = 0.041\kgmm$\\
+        The angular velocity is: $\omega = 2\pi(10.0\text{ rev/s}) = 62.83\rads$\\
+        Therefore the rotational and translational kinetic energies are:\\
+        \begin{minipage}{0.4\textwidth}
+            \begin{align*}
+                K_R &= \frac{1}{2}I\omega^2\\
+                &= \frac{1}{2}(0.041\kgmm)(62.83\rads)^2\\
+                &= 80.93\J
+            \end{align*}            
+        \end{minipage}
+        \begin{minipage}{0.4\textwidth}
+            \begin{align*}
+                K_T &= \frac{1}{2}mv^2\\
+                &= \frac{1}{2}(1.0\kg)(30.0\ms)^2\\
+                &= 450.0\J
+            \end{align*}
+        \end{minipage}\\
+        Therefore, the total kinetic energy of the boomerang is $\displaystyle K_{tot} = (80.93 + 450.0)\J = 530.93\J$
+        \item[(b)] How high does the boomerang go from the elevation of the hand, neglecting air resistance?
+        \vspace{1mm}\\
+        The maximum height can be found using the conservation of mechanical energy ($E_0 = E_f$). Since the boomerang is launched at an angle, the total energy of the system must be written in terms of its linear kinetic energies using velocity in the $x$ and $y$ directions.\\
+        The energy when the boomerang leaves the hand is: $\displaystyle E_0 = \frac{1}{2}mv_x^2 + \frac{1}{2}mv_y^2 + \frac{1}{2}I\omega^2$\\
+        The total energy at the maximum height $h$ is: $\displaystyle E_f = \frac{1}{2}mv_x^2 + \frac{1}{2}I\omega^2 + mgh$\\
+        Equating and canceling like terms gives:
+        \begin{align*}
+            \cancel{\frac{1}{2}mv_x^2} + \frac{1}{2}mv_y^2 + \cancel{\frac{1}{2}I\omega^2} &= \cancel{\frac{1}{2}mv_x^2} + \cancel{\frac{1}{2}I\omega^2} + mgh\\
+            \frac{1}{2}mv_y^2 &= mgh
+        \end{align*}
+        Rearranging and entering known values gives:
+        \begin{align*}
+            h &= \frac{\cancel{m}v_y^2}{2\cancel{m}g} \to h = \frac{v_y^2}{2g}\\
+            h &= \frac{(19.28\ms)^2}{2(9.8\mss)} = 18.97\m
+        \end{align*}
+    \end{enumerate} 
 \end{shaded}
 
 \end{document}
