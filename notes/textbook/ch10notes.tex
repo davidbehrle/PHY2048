@@ -686,17 +686,20 @@ The kinetic energy of a rotating rigid body is directly proportional to the mome
     \vspace{2mm}\\
     Six small washers are spaced 10 cm apart on a rod of negligible mass and 0.5 m in length. The mass of each washer is 20 g. The rod rotates about an axis located at 25 cm as shown.
     \begin{center}
-        \begin{tikzpicture}
+        \begin{tikzpicture}[scale=1.5]
             \draw[line width=0.5pt] (0,-0.5)--(0,0.5);
             \draw[-,thick] (-0.75,0)--(0.75,0);
-            \filldraw (-0.75,0) circle (0.05);
-            \filldraw (-0.45,0) circle (0.05);
-            \filldraw (0.75,0) circle (0.05);
-            \filldraw (0.45,0) circle (0.05);
-            \filldraw (0.15,0) circle (0.05);
-            \filldraw (-0.15,0) circle (0.05);
-            \draw[-] (-0.75,-0.125)--node[below]{10 cm}(-0.45,-0.125);
-            \centerarc[->,draw=black](0,0.5)(120:420:0.1667) node[above]{Rotation axis};
+            \filldraw[draw=black!40!red,fill=black!20!red] (-0.75,0) circle (0.05);
+            \filldraw[draw=black!40!red,fill=black!20!red] (-0.45,0) circle (0.05);
+            \filldraw[draw=black!40!red,fill=black!20!red] (0.75,0) circle (0.05);
+            \filldraw[draw=black!40!red,fill=black!20!red] (0.45,0) circle (0.05);
+            \filldraw[draw=black!40!red,fill=black!20!red] (0.15,0) circle (0.05);
+            \filldraw[draw=black!40!red,fill=black!20!red] (-0.15,0) circle (0.05);
+            \draw[|-|] (-0.75,-0.2)--node[below]{10 cm}(-0.45,-0.2);
+            \centerarc[->,thick,draw=black,-stealth](0,0.5)(120:210:0.1667);
+            \centerarc[->,thick,draw=black,-stealth](0,0.5)(350:420:0.1667);
+            \centerarc[->,thick,draw=black,-stealth](0,0.5)(210:350:0.1667);
+            \node[above,yshift=1mm] at (0,0.6){Rotation axis};
         \end{tikzpicture}
     \end{center}
     \begin{enumerate}
@@ -722,6 +725,45 @@ The kinetic energy of a rotating rigid body is directly proportional to the mome
             &= \frac{1}{2}(3.5 \times 10^{-3}\kgmm)\big[5.0(2\pi\rads)\big]^2\\
             &= 1.73\J
         \end{align*}
+    \end{enumerate}
+\end{shaded}
+\bf{Applying Rotational Kinetic Energy}
+\begin{shaded}
+    \underline{\bf{Problem Solving Strategy:} Rotational Energy}
+    \begin{enumerate}
+        \item Determine that energy or work is involved in the rotation
+        \item Determine the system of interest
+        \item Analyze the situation to determine the types of work and energy involved
+        \item If there are no losses of energy due to friction and other nonconservative forces, mechanical energy is conserved: $K_0 + U_0 = K_f + U_f$
+        \item If nonconservative forces are present, mechanical energy is not conserved, determine what they are and calculate them as necessary
+        \item Eliminate terms wherever possible to simplify the algebra
+        \item Evaluate the numerical solution to see if it makes sense in the physical situation presented in the wording of the problem
+    \end{enumerate}
+\end{shaded}
+
+\newpage
+\begin{shaded}
+    \underline{\bf{Example 10.9:} Calculating Helicopter Energies}
+    \vspace{2mm}\\
+    A typical small rescue helicopter has four blades, each is 4.00 m long and has a mass of 50.0 kg. The blades can be approximated as thin rods that rotate about one end of an axis perpendicular to their length. The helicopter has a total loaded mass of 1000 kg.
+    \begin{enumerate}
+        \item[(a)] Calculate the rotational kinetic energy in the blades when they rotate at 300 rpm
+        \vspace{2mm}\\
+        The rotational kinetic energy is given by $\frac{1}{2}I\omega^2$. First, the angular velocity must be converted to$\rads$, the angular velocity $\omega$ is
+        \begin{align*}
+            \omega = \frac{300\text{ rev}}{1.00\text{ min}} \cdot \frac{2\pi\rad}{1\text{ rev}} \cdot \frac{1.00\text{ min}}{60.0\s} = 31.4\rads
+        \end{align*}
+        The moment of inertia of one blade is that of a thin rod rotated about its end, the total $I$ is 4 times this because there are 4 blades.
+        \begin{align*}
+            I = 4\frac{ML^2}{3} = 4\bigg(\frac{(50.0\kg)(4.00\m)^2}{3}\bigg) = 1067.0\kgmm
+        \end{align*}
+        Entering $\omega$ and $I$ into the expression for rotational kinetic energy gives:
+        \begin{align*}
+            K &= \frac{1}{2}I\omega^2\\
+            &= \frac{1}{2}(1067\kgmm)(31.4\rads)^2\\
+            &= 5.26 \cdot 10^5\J
+        \end{align*}
+        \item[(b)] Calculate the translational kinetic energy of the helicopter when it flies at 20.0$\ms$, and compare it with the rotational energy in the blades
     \end{enumerate}
 \end{shaded}
 
