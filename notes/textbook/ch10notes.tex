@@ -40,7 +40,7 @@
 \newcommand\mss{\text{ ms}^{-2}}
 \newcommand\kg{\text{ kg}}
 \newcommand\kgms{\text{ kg\;ms}^{-1}}
-\newcommand\kgmm{\text{ kg\;m}^{-2}}
+\newcommand\kgmm{\text{ kg\;m}^{2}}
 \newcommand{\AxisRotator}[1][rotate=0]{%
     \tikz [x=0.25cm,y=0.60cm,line width=.2ex,-stealth,#1] \draw (0,0) arc (-150:150:1 and 1);%
 }
@@ -1291,6 +1291,115 @@ In the following examples, torque is calculated both abstractly and as applied t
         &= (5 - 15)\Nm = -10\Nm
     \end{align*}
     The axis of rotation is at the center of mass of the flywheel. Since the flywheel is on a fixed axis, it is not free to translate. If it were on a frictionless surface and not fixed in place, $\vec{F}_3$ would cause the flywheel to translate, as well as $\vec{F}_1$. Its motion would be a combination of translation and rotation.
+\end{shaded}
+\newpage
+
+\subsection{Newton's Second Law For Rotation}
+Is there an analogous equation to Newton's second law, $\sum\vec{F} = m\vec{a}$, which involves torque and rotational motion? We start with Newton's second law for a single particle rotating around an axis and executing circular motion. If we exert a force $\vec{F}$ on a point mass $m$ that is at a distance $r$ from a pivot point, the particle is constrained to move in a circular path with fixed radius and the force is tangent to the circle. Apply Newton's second law to determine the magnitude of acceleration $a = \sfrac{F}{m}$ in the direction of $\vec{F}$. Recall that the magnitude of the tangential acceleration is proportional to the magnitude of the angular acceleration by $a = r\alpha$. Substituting this into Newton's second law gives:
+\begin{align*}
+    F = mr\alpha
+\end{align*}
+\begin{center}
+    \begin{tikzpicture}
+        %\filldraw[brown!80!orange!60!] (1.25,1.25) rectangle (-1.25,-1.25);
+        \draw[black!40,thick] (0,0) circle (1);
+        \centerarc[black!50,->,-latex,semithick](0,0)(0:30:1);
+        \centerarc[black!50,->,-latex,semithick](0,0)(90:120:1);
+        \centerarc[black!50,->,-latex,semithick](0,0)(180:210:1);
+        \centerarc[black!50,->,-latex,semithick](0,0)(270:300:1);
+
+        \draw[line width=0.75pt] (0,0)--({cos(60)},{sin(60)});
+        \draw[->,very thick,-latex,draw=black!15!red] ({1 + cos(60)},0)--node[above,xshift=1.5mm]{$\vec{F}$}({cos(60)},{sin(60)});
+
+        \filldraw[black!60] (0,0) circle (0.75pt);
+        \filldraw[black!60] ({cos(60)},{sin(60)}) circle (1.25pt) node[above,text=black]{$m$};
+    \end{tikzpicture}    
+\end{center}
+Multiply both sides of the equation by $r$:
+\begin{align*}
+    rF = mr^2\alpha
+\end{align*}
+Note that the left side of this equation is the torque about the axis of rotation, where $r$ is the lever arm and $F$ is the force, perpendicular to $r$. Recall that the moment of inertia for a point particle is $I = mr^2$. The torque applied perpendicularly to the point mass in the figure is therefore
+\begin{align*}
+    \tau = I\alpha
+\end{align*}
+The torque on the partical is equal to the moment of inertia about the rotation axis times the angular acceleration. This can be generalized to a rigid body rotating about a fixed axis.
+\begin{equation}
+    \tau_{net} = \sum_{i}\tau_i = I\alpha
+\end{equation}
+If more than one torque acts on a rigid body about a fixed axis, then the sum of the torques equals the moment of inertia times the angular acceleration. The term $I\alpha$ is a scalar quantity and can be positive or negative depending on the sign of the net torque. The convention is that counterclockwise is positive, thus if a rigid body is rotating clockwise and experiences a positive torque, the angular acceleration is positive.
+\vspace{1mm}\\
+Equation 25 is Newton's second law for rotation and tells us how to relate torque, moment of inertia, and rotational kinematics. This is called the equation for rotational dynamics. 
+\vspace{2mm}\\
+\bf{Deriving Newton's Second Law For Rotation in Vector Form}
+\vspace{2mm}\\
+Like before when we found the angular acceleration vector, we may also find the torque vector. The second law tells us the relationship between net force and how to change the translational motion of an object. A vector rotational equivalent of this equation can be found using equations 7 and 8 ($a_t = r\alpha$). Equation 7 relates the angular acceleration to the position and tangential acceleration vectors:
+\begin{align*}
+    \vec{a} = \vec{\alpha} \times \vec{r}
+\end{align*}
+We form the cross product of this equation with $\vec{r}$ and use a cross product identity (note $\vec{r}\cdot\vec{\alpha} = 0$):
+\begin{align*}
+    \vec{r}\times\vec{a} = \vec{r}\times(\vec{\alpha}\times\vec{r}) = \vec{\alpha}(\vec{r}\cdot\vec{r}) - \vec{r}(\vec{r}\cdot\vec{\alpha}) = \alpha(\vec{r}\vdot\vec{r}) = \vec{\alpha}r^2
+\end{align*}
+Now we form the cross product of Newton's second law with the position vector $\vec{r}$:
+\begin{align*}
+    \sum(\vec{r}\times\vec{F}) = \vec{r}\times(m\vec{a}) = m\vec{r}\times\vec{a} = mr^2\vec{\alpha}
+\end{align*}
+Identifying the first term on the left as the sum of the torques and $mr^2$ as the moment of inertia, we arrive at Newton's second law of rotation in vector form:
+\begin{equation}
+    \tau_{net} = \sum\vec{\tau} = I\alpha
+\end{equation}
+This is exactly the same as equation 25 but with the torque and angular acceleration as vectors. An important point is that the torque vector is in the same direction as the angular acceleration.
+\newpage\noindent
+\bf{Applying The Rotational Dynamics Equation}
+\begin{shaded}
+    \underline{\bf{Problem Solving Strategy:} Rotational Dynamics}
+    \begin{enumerate}
+        \item Examine the situation to determine that torque and mass are involved in the rotation; draw a sketch of the situation
+        \item Determine the system of interest
+        \item Draw a free-body diagram, draw and label all external forces acting on the system
+        \item Identify the pivot point If the object is in equilibrium, it must be in equilibrium for all possible pivot points, chose the one that simplifies your work the most
+        \item Apply $\sum\limits_i\tau_i = I\alpha$, the rotational equivalent of Newton's second law, to solve the problem. Care must be taken to use the correct moment of inertia and to consider the torque about the point of rotation
+        \item As always, check the solution to see if it is reasonable
+    \end{enumerate}    
+\end{shaded}
+
+\begin{shaded}
+    \underline{\bf{Example 10.16:} Calculating The Effect of Mass Distribution on a Merry-Go-Round}
+    \vspace{2mm}\\
+    Consider a father pushing a playground merry-go-round. He exerts a force of 250 N at the edge of the 50.0 kg merry-go-round, which has a 1.50 m radius. Calculate the angular acceleration produced when:
+    \begin{enumerate}
+        \item[(a)] When no one is on the merry-go-round \vspace{1mm}\\
+        The moment of inertia of a solid disk about this axis is $\displaystyle I = \frac{1}{2}MR^2$. We have $M = 50.0\kg$ and $R = 1.50\m$, so:
+        \begin{align*}
+            I = \frac{1}{2}(50.0\kg)(1.50\m)^2 = 56.25\kgmm
+        \end{align*}
+        To find the net torque, note that applied force is perpendicular to the radius and friction is negligible, so that:
+        \begin{align*}
+            \tau = rF\sin(\theta) = (1.50\m)(250.0\text{ N})\Nm = 375.0\Nm
+        \end{align*}
+        Now to find the angular acceleration, substitute in the known values
+        \begin{align*}
+            \alpha = \frac{\tau}{I} = \frac{375.0\Nm}{56.25\kgmm} = 6.67\radss
+        \end{align*}
+        \item[(b)] When an 18.0 kg child sits 1.25 m away from the center\vspace{1mm}\\
+        We expect the angular acceleration of the system to be less in this part because the moment of inertia is greater when the child is on the merry-go-round. To find the total mometnt of inertia $I$, we must first find the child's moment of inertia $I_c$ by approximating the child as a point mass at a distance of 1.25 m from the axis, then:
+        \begin{align*}
+            I_c = mR^2 = (18.0\kg)(1.25\m)^2 = 28.13\kgmm
+        \end{align*}
+        The total moment of inertia is the sum of the moments of inertia of the merry-go-round and the child (about the same axis):
+        \begin{align*}
+            I &= I_m + I_c\\
+            &= 56.25\kgmm + 28.13\kgmm\\
+            &= 84.38\kgmm
+        \end{align*}
+        Substituting known values into the equation for $\alpha$ gives:
+        \begin{align*}
+            \alpha &= \frac{\tau}{I} = \frac{375.0\Nm}{84.38\kgmm}\\
+            &= 4.44\radss
+        \end{align*}
+        The angular acceleration is less when the child is on the merry-go-round than when it is empty, as expected. The angular accelerations found are quite large, partly due to the fact that friction was considered negligible.
+    \end{enumerate}
 \end{shaded}
 
 \end{document}
