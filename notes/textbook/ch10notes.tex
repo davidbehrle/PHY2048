@@ -1401,5 +1401,59 @@ This is exactly the same as equation 25 but with the torque and angular accelera
         The angular acceleration is less when the child is on the merry-go-round than when it is empty, as expected. The angular accelerations found are quite large, partly due to the fact that friction was considered negligible.
     \end{enumerate}
 \end{shaded}
+\newpage
+
+\subsection{Work and Power For Rotational Motion}
+In this section, work and power are defined within the context of rotation about a fixed axis. The discussion of work adn power makes our treatment of rotational motion almost complete, with the exception of rolling motion and angular momentum.
+\vspace{2mm}\\
+\bf{Work For Rotational Motion}
+\vspace{2mm}\\
+Now that we can calculate the kinetic energy for rotating rigid bodies, we can proceed with a discussion of the work done on a rigid body rotating about a fixed axis. A rigid body that has rotated through an angle $d\theta$ from $A$ to $B$ while under the influence of a force $\vec{F}$. The external force $\vec{F}$ is applied to point $P$, whose position is $\vec{r}$, and the rigid body is constrained to rotate about a fixed axis that is perpendicular to the page and passes through $O$. The rotational axis is fixed, so that the vector $\vec{r}$ moves in a circle of radius $r$, and the vector $d\vec{s}$ is perpendicular to $\vec{r}$.
+\begin{center}
+    \begin{tikzpicture}[scale=1.5]
+        \draw[->,-latex,very thick,draw=black!20!green!35!blue] (0,0) coordinate (O) -- node[left]{$\vec{r}$}({1.5*cos(52.5)},{1.5*sin(52.5)}) coordinate (a);
+        \draw[->,-latex,very thick,draw=black!20!green!25!blue!50] (O) -- node[right]{$\vec{r}$} ({1.5*cos(37.5)},{1.5*sin(37.5)}) coordinate (b);
+        \draw[->,-latex,very thick,draw=black!20!green!35!blue] (b)--node[above,xshift=2mm,yshift=-1.25mm]{$d\vec{s}$}(a);
+
+        \draw[->,-latex,very thick,draw=black!20!red] (a) -- node[right]{$\vec{F}_R$} ({2.0*cos(52.5)},{2.0*sin(52.5)}) coordinate (c);
+        \draw[->,-latex,very thick,draw=black!20!red] (c)--node[right,yshift=2mm,xshift=-1mm]{$\vec{F}_s$} ([turn]90:0.75) coordinate (d);
+        \draw[->,-latex,very thick,draw=black!20!red] (a)--node[left]{$\vec{F}$} (d);
+
+        \draw pic["$d\theta$",-,thick,draw=black,angle eccentricity=1.5,angle radius = 8.5mm]{angle=b--O--a};
+
+        \filldraw[black] (a) circle (0.75pt) node[left]{$P$};
+        \filldraw[black!50] (b) circle (0.75pt) node[right,text=black]{$P$};
+        \filldraw[black] (O) circle (0.75pt) node[left,yshift=-1.5mm]{$O$};
+    \end{tikzpicture}
+\end{center}
+From equation 2, we have $\vec{s} = \vec{\theta}\times\vec{r}$, thus:
+\begin{align*}
+    d\vec{s} = d(\vec{\theta}\times\vec{r}) = d\vec{\theta}\times\vec{r} + d\vec{r}\times\vec{\theta} = d\vec{\theta}\times\vec{r}
+\end{align*}
+Note that $d\vec{r}$ is zero because $\vec{r}$ is fixed on the rigid body from the origin $O$ to point $P$. Using the definition of work we can obtain
+\begin{align*}
+    W = \int\sum\vec{F}\cdot d\vec{s} = \int\sum\vec{F}\cdot(d\vec{\theta}\times\vec{r}) = \int d\vec{\theta}\cdot\Big(\vec{r}\times\sum\vec{F}\Big)
+\end{align*}
+We use the identity $\vec{a}\cdot(\vec{b}\times\vec{c}) = \vec{b}\cdot(\vec{c}\times\vec{a})$. Noting that ($\vec{r}\times\sum\vec{F}$) = $\sum\vec{\tau}$, we arrive at the expression for the \underline{rotational work} done on a rigid body:
+\begin{equation}
+    W = \int\sum\vec{\tau}\cdot d\vec{\theta}
+\end{equation}
+The total work done on a rigid body is the sum of the torques integrated over the angle through which the body rotate. The incremental work is:
+\begin{equation}
+    dW = \bigg(\sum_{i}\tau_i\bigg)d\theta
+\end{equation}
+Where we have taken the dot product from equation 27, leaving only torques along the axis of rotation. In a rigid body, all particles rotate through the same angle, thus the work of every external force is equal to the torque times the common incremental angle $d\theta$. The quantity $\Big(\sum\limits_i\tau_i\Big)$ is the net torque on the body due to external forces.\\
+Similarly, we found the kinetic energy of a rigid body rotating around a fixed axis by summing the kinetic energy of each particle that makes up the rigid body. Since the work-energy theorem, $W_i = \Delta K_i$, is valid for each particle, it is valid for the sum of the particles and the entire body.
+\vspace{2mm}\\
+\bf{Work-Energy Theorem For Rotation}
+\vspace{1mm}\\
+The work-energy theorem for a rigid body rotating around a fixed axis is:
+\begin{equation}
+    W_{AB} = K_B - K_A
+\end{equation}
+Where $K = \frac{1}{2}I\omega^2$ and the rotational work done by a net force rotating a body from point $A$ to point $B$ is:
+\begin{equation}
+    W_{AB} = \int\limits_{\theta_A}^{\text{ }\theta_B}\bigg(\sum_{i}\tau_i\bigg)d\theta
+\end{equation}
 
 \end{document}
