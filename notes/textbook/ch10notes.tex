@@ -121,7 +121,7 @@ Where $\theta\der{r}{t} = 0$. Here, $\der{s}{t}$ is just the tangential speed $v
 \begin{equation}
     v_t = r\omega
 \end{equation}
-The tangential speed of the particle is its angular velocity times the radius of the circle. The tangential speed of the particle increases with its distance from the axis of rotation for a constant angular velocity. The figure shows two particles placed at different radii on a rotating disk with constant angular velocity. As it rotates, the tangential speed increases linearly with the radius from the axis of rotation. We see that $v_1 = r_1\omega_1$ and $v_2 = r_2\omega_2$. The disk has a constant angular velocity so $\omega_1 = \omega_2$. This means that $\frac{v_1}{r_1} = \frac{v_2}{r_2}$ or $v_2 = \big(\frac{r_2}{r_1}\big)$. Thus, since $r_2 > r_1$, $v_2 > v_1$
+The tangential speed of the particle is its angular velocity times the radius of the circle. The tangential speed of the particle increases with its distance from the axis of rotation for a constant angular velocity. The figure shows two particles placed at different radii on a rotating disk with constant angular velocity. As it rotates, the tangential speed increases linearly with the radius from the axis of rotation. We see that $v_1 = r_1\omega_1$ and $v_2 = r_2\omega_2$. The disk has a constant angular velocity so $\omega_1 = \omega_2$. This means that $\frac{v_1}{r_1} = \frac{v_2}{r_2}$ or $v_2 = \big(\frac{r_2}{r_1}\big)v_1$. Thus, since $r_2 > r_1$, $v_2 > v_1$
 \begin{center}
     \begin{tikzpicture}[scale=2]
         %%% COORDINATES %%%
@@ -1455,5 +1455,188 @@ Where $K = \frac{1}{2}I\omega^2$ and the rotational work done by a net force rot
 \begin{equation}
     W_{AB} = \int\limits_{\theta_A}^{\text{ }\theta_B}\bigg(\sum_{i}\tau_i\bigg)d\theta
 \end{equation}
+\begin{shaded}
+    \underline{\bf{Problem Solving Strategy:} Work-Energy Theorem For Rotational Motion}
+    \begin{enumerate}
+        \item Identify the forces on the body and draw a free-body diagram. Calculate the torque for each force.
+        \item Calculate the work done during the body's rotation by every torque
+        \item Apply the work-energy theorem by equating net work done on the body to the change in rotational kinetic energy
+    \end{enumerate}
+\end{shaded}
+
+\newpage
+\begin{shaded}
+    \underline{\bf{Example 10.17:} Rotational Work and Energy}
+    \vspace{2mm}\\
+    A 12.0 Nm torque is applied to a flywheel that rotates about a fixed axis and has a moment of inertia of $30.0\kgmm$. If the flywheel is initially at rest, what is its angular velocity after it has turned through eight revolutions?
+    \vspace{1mm}\\
+    Apply the work-energy theorem, torque and angular displacement are given, making it possible to solve for final angular velocity
+    \vspace{1mm}\\
+    The flywheel turns through eight revolutions which is $2\pi(8$ rev$) = 16\pi\rad$. The work done by the torque, which is constant and can be pulled outside the integral in equation 30 is:
+    \begin{align*}
+        W_{AB} = \tau(\theta_B - \theta_A)
+    \end{align*}
+    Applying the work-energy theorem:
+    \begin{align*}
+        W_{AB} &= \Delta K = K_B - K_A\\
+        \tau(\theta_B - \theta_A) &= \frac{1}{2}I\omega_B^2 - \frac{1}{2}I\omega_A^2
+    \end{align*}
+    With $\tau = 12.0\Nm$, $(\theta_B - \theta_A) = 16.0\pi\rad$, $I = 30.0\kgmm$, and $\omega_A = 0$, we have:
+    \begin{align*}
+        (12.0\Nm)(16.0\pi\rad) = \frac{1}{2}(30.0\kgmm)(\omega_B^2) - 0
+    \end{align*}
+    Therefore,
+    \begin{align*}
+        \omega_B = 6.3\rads
+    \end{align*}
+    This is the agular velocity of the flywheel after eight revolutions. The work-energy theorem provides an efficient way to analyze rotational motion, connecting torque and kinetic energy
+\end{shaded}
+
+\begin{shaded}
+    \underline{\bf{Example 10.18:} Rotational Work of a Pulley}
+    \vspace{2mm}\\
+    A string wrapped around a pulley is pulled with a constant downward force $\vec{F}$ of magnitude 50 N. The radius is $R = 0.10\m$ and the moment of inertia is $I = 2.5\cdot10^{-3}\kgmm$. If the string does not slip what is the angular velocity of the pulley after 1.0 m of string has unwound? (Assume the pulley starts from rest)
+    \begin{center}
+        \begin{tikzpicture}[scale=1.25]
+            \draw[-,ultra thick,draw=brown!60!orange] (-1,0)--(-1,-1);
+            \filldraw[black!30] (0,0) circle (1);
+            \draw[black,ultra thick] (0,0) circle (1);
+            \draw[line width=7.5pt](0,0)--(0,1.25);
+            \filldraw[black!60] (0,0) circle (3pt);
+            \draw[line width=7.5pt,draw=black!60] (-1,1.25)--(1,1.25);
+            \draw[->,ultra thick,-latex] (0,0)--node[above,xshift=1mm]{$R$}({cos(55)},{-sin(55)});
+            \draw[->,ultra thick,-latex,draw=black!20!red] (-1,-1)--node[left]{$\vec{F}$} (-1,-2.2);
+            \node at (0,-2.25) {(a)};
+        \end{tikzpicture}
+        \hspace{20mm}
+        \begin{tikzpicture}[scale=1.25]
+            \draw[->,ultra thick,-latex,draw=black!20!red] (-1,0)--node[left]{$\vec{F}$}(-1,-1.2);
+            \filldraw[black!30] (0,0) circle (1);
+            \draw[black,ultra thick] (0,0) circle (1);
+            \draw[->,ultra thick,-latex,draw=black!20!red] (0,0)--(0,1.35) node[left]{$\vec{B}$};
+            \draw[->,ultra thick,-latex,draw=black!20!red] (0,0)--(0,-1.35) node[left]{$M\vec{g}$};
+            
+            \filldraw[black!60] (0,0) circle (3pt);
+            \node at (0,-2.25) {(b)};
+        \end{tikzpicture}
+    \end{center}
+    Looking at the free-body diagram, we see that neither $\vec{B}$, the force on the bearings of the pulley, nor $M\vec{g}$, the weight of the pulley, exerts a torque around the rotational axis, and therefore does no work on the pulley. As the pulley rotates through an angle $\theta$, $\vec{F}$ acts through a distance $d$ such that $d = R\theta$
+    \vspace{1mm}\\
+    Since torque due to $\vec{F}$ has magnitude $\tau = RF$, we have:
+    \begin{align*}
+        W = \tau\theta = (FR)\theta = Fd
+    \end{align*}
+    If the force on the string acts through a distance of 1.0 m, we have, from the work-energy theorem:
+    \begin{align*}
+        W_{AB} &= K_B - K_A\\
+        Fd &= \frac{1}{2}I\omega^2 - 0\\
+        (50.0\text{ N})(1.0\m) &= \frac{1}{2}(2.5\times10^{-3}\kgmm)\omega^2
+    \end{align*}
+    Solving for $\omega$, we obtain:
+    \begin{align*}
+        \omega = 200.0\rads
+    \end{align*}
+\end{shaded}
+\newpage\noindent
+\bf{Power For Rotational Motion}
+\vspace{2mm}\\
+Power for rotational motion is equally as important as power in linear motion and can be derived in a similar way as in linear motion when the force is constant. The linear power when the force is constant is $P = \vec{F}\cdot\vec{v}$. If the net torque is constant over the angular displacement, equation 25 ($\tau_{net} = \sum_i\tau_i = I\alpha$) simplifies and the net torque can be taken out of the integral. From chapter 7, the instantaneous power is defined as the rte of doing work:
+\begin{align*}
+    P = \der{W}{t}
+\end{align*}
+If net torque is constant, equation 25 becomes $W = \tau\theta$ and the power is:
+\begin{align*}
+    P = \der{W}{t} = \der{}{t}(\tau\theta) = \tau\der{\theta}{t}
+\end{align*}
+Rewritting where $\displaystyle \omega = \der{\theta}{t}$, gives:
+\begin{equation}
+    P = \tau\omega
+\end{equation}
+\begin{shaded}
+    \underline{\bf{Example 10.19:} Torque on a Boat Propeller}
+    \vspace{2mm}\\
+    A boat engine starts operating at $9.0\cdot10^4$ W is running at 300 rev/min. What is the torque on the propeller shaft?
+    \vspace{1mm}\\
+    Rotation rate in rev/min and power consumption are given, torque can be calculated simply
+    \vspace{1mm}\\
+    Converting from rev/min to $\rads$:
+    \begin{align*}
+        \frac{300\text{ rev}}{1\text{ min}}\cdot \frac{2\pi\rad}{1\text{ rev}} = \frac{1885\text{ rad}}{1\text{ min}}\cdot\frac{1\text{ min}}{60\s} = 31.4\rads
+    \end{align*}
+    Rearranging the equation $P = \tau\omega$ and substituting in the values:
+    \begin{align*}
+        \tau &= \frac{P}{\omega} = \frac{9.0\cdot10^4\ms}{31.4\rads}\\
+        &= 2864.8\Nm
+    \end{align*}
+    It is important to note that the radian is a dimensionless unit because its definition is the ratio of two lengths, it therefore does not appear in the solution
+\end{shaded}
+\bf{Rotational and Translational Relationships Summarized}
+\vspace{2mm}\\
+The rotational quantities and their linear analogs are summarized in three tables. The first summarizes the rotational variables for circular motion about a fixed axis with their linear analogs and the connecting equation (where applicable). The second summarized the rotational and translational kinematic equations. The third summarizes the rotational dynamics equations with their linear analogs
+\begin{center}
+    \begin{minipage}{0.4\textwidth}
+        \bf{Table 1}\vspace{2mm}\\
+        \begin{tabularx}{1\textwidth}{ 
+            | >{\raggedright\arraybackslash}X
+            | >{\raggedright\arraybackslash}X  
+            | >{\raggedright\arraybackslash}X |
+        }
+            \hline
+            Rotational & Translational & Relationship\\[2.5pt]
+            \hline
+            $\theta$ & $x$ & $\theta = \frac{s}{r}$\\[2.5pt]
+            \hline
+            $\omega$ & $v_t$ & $\omega = \frac{v_t}{r}$\\[2.5pt]
+            \hline
+            $\alpha$ & $a_t$ & $\alpha = \frac{a_t}{r}$\\[2.5pt]
+            \hline
+            & $a_c$ & $a_c = \frac{v_t^2}{r}$\\[2.5pt]
+            \hline
+        \end{tabularx}
+    \end{minipage}
+    \hspace{10mm}
+    \begin{minipage}{0.4\textwidth}
+        \bf{Table 2}\vspace{2mm}\\
+        \begin{tabularx}{1\textwidth}{
+            | >{\raggedright\arraybackslash}X
+            | >{\raggedright\arraybackslash}X |
+        }
+            \hline
+            Rotational & Translational\\[2.75pt]
+            \hline
+            $\theta_f = \theta_0 + \bar{\omega}t$ & $x_f = x_0 + \bar{v}t$\\[2.75pt]
+            \hline
+            $\omega_f = \omega_0 + \alpha t$ & $v_f = v_0 + at$\\[2.75pt]
+            \hline
+            $\theta_f = \theta_0 + \omega_0t + \frac{1}{2}\alpha t^2$ & $x_f = x_0 + v_0t + \frac{1}{2}at^2$\\[2.75pt]
+            \hline
+            $\omega^2_f = \omega^2_0 + 2\alpha(\Delta\theta)$ & $v^2_f = v^2_0 + 2a(\Delta x)$\\[2.75pt]
+            \hline
+        \end{tabularx}
+    \end{minipage}
+\end{center}
+\begin{center}
+    \begin{minipage}{0.45\textwidth}
+        \bf{Table 3}\vspace{2mm}\\
+        \begin{tabularx}{1\textwidth}{
+            | >{\raggedright\arraybackslash}X
+            | >{\raggedright\arraybackslash}X |
+        }
+            \hline
+            Rotational & Translational\\
+            \hline
+            $\displaystyle I = \sum_{i}^{}m_iR^2_i$ & $m$\\
+            \hline
+            $\displaystyle K = \frac{1}{2}I\omega^2$ & $\displaystyle K = \frac{1}{2}mv^2$\\
+            \hline
+            $\displaystyle \sum_{i}^{}\tau_i = I\alpha$ & $\displaystyle \sum_{i}\vec{F}_i = m\vec{a}$\\
+            \hline
+            $\displaystyle W_{AB} = \int\limits_{\theta_A}^{\text{ }\theta_B}\bigg(\sum_{i}\tau_i\bigg)d\theta$ & $\displaystyle W = \int\vec{F}\cdot d\vec{s}$\\
+            \hline
+            $P = \tau\omega$ & $P = \vec{F}\cdot\vec{v}$\\[2.5pt]
+            \hline
+        \end{tabularx}
+    \end{minipage}
+\end{center}
 
 \end{document}
