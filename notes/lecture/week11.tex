@@ -1,0 +1,97 @@
+\documentclass[a4paper]{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{framed}
+\usepackage{xfrac}
+\usepackage[most]{tcolorbox}
+\usepackage{fix-cm}
+\usepackage{cancel}
+\usepackage[margin=0.5in]{geometry}
+\usetikzlibrary{quotes,angles}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{calc}
+\usepgfplotslibrary{fillbetween}
+
+\let\phi\varphi
+\let\bf\textbf
+\colorlet{shadecolor}{orange!15}
+\pgfplotsset{compat=1.18}
+\newcommand\der[2]{\frac{d #1}{d #2}}
+\newcommand\Deltat{\Delta t}
+\newcommand\rads{\text{ rad\;s}^{-1}}
+\newcommand\radss{\text{ rad\;s}^{-2}}
+\newcommand\rad{\text{ rad}}
+\newcommand\s{\text{ s}}
+\newcommand\m{\text{ m}}
+\newcommand\J{\text{ J}}
+\newcommand\Nm{\text{ Nm}}
+\newcommand\ms{\text{ ms}^{-1}}
+\newcommand\mss{\text{ ms}^{-2}}
+\newcommand\kg{\text{ kg}}
+\newcommand\kgms{\text{ kg\;ms}^{-1}}
+\newcommand\kgmm{\text{ kg\;m}^{2}}
+\newcommand{\AxisRotator}[1][rotate=0]{%
+    \tikz [x=0.25cm,y=0.60cm,line width=.2ex,-stealth,#1] \draw (0,0) arc (-150:150:1 and 1);%
+}
+\def\centerarc[#1](#2)(#3:#4:#5){\draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5)}
+% Syntax: \centerarc[draw options] (center) (initial angle:final angle:radius);
+
+\begin{document}
+\section{7/23}
+\bf{Review: Static Equilibrium}\\
+For a particle
+\begin{itemize}
+    \item $F_{net} = 0$
+\end{itemize}
+For an extended object
+\begin{itemize}
+    \item $F_{net} = 0$
+    \item $\tau_{net} = 0$
+\end{itemize}
+\begin{align*}
+    \tau = r\times F = I\alpha
+\end{align*}
+For linear momentum $\vec{P} = m\vec{v}$, for angular momentum, $\vec{L} = I\omega$
+\begin{align*}
+    \vec{\tau} = r\times F\\
+    \vec{L} = \vec{r} \times \vec{P}\\
+    L = \vec{r}\times m\vec{v} = mvrsin(\theta)\\
+    L_{max} = mvr\ (v = r\omega)\\
+    = (mr\times r)\omega = I\vec{omega}
+\end{align*}
+\begin{shaded}
+    \underline{\bf{Practice:} Rotating Disk}
+    What is the angular momentum about the axle of a 2.0 kg, 4.0 cm diameter disk rotating at 600 rpm\\
+    Known: $m, d, \omega$, Want: L
+    \begin{align*}
+        L = I\omega\\
+        I = \frac{1}{2}mR^2\\
+        I = \frac{1}{2}m(\sfrac{d}{2})^2\\
+        I = \frac{1}{2}m\frac{d^2}{4} = \frac{1}{8}md^2
+        L = \frac{1}{8}md^2\omega\\
+        L = 0.025\kgmm\text{/s}
+    \end{align*}
+\end{shaded}
+\begin{align*}
+    \vec{\tau}_{net} = I\alpha = \sum\tau_i = \sum\vec{r}_i\times \vec{F}_i
+\end{align*}
+In the absence of external torques: $\displaystyle I\alpha = \frac{d(I\vec{\omega})}{dt} = 0$, $I\vec{\omega} = L =$ constant
+
+\begin{shaded}
+    \underline{\bf{Example:} Krunchy on a Turntable}
+    \vspace{2mm}\\
+    Krunchy of mass $m$ rides on a disk of mass $6m$ and radius $R$ as shown. The disk rotates bround its central axis at angular speed 1.5$\rads$
+\end{shaded}
+
+\end{document}
