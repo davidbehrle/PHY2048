@@ -93,5 +93,51 @@ In the absence of external torques: $\displaystyle I\alpha = \frac{d(I\vec{\omeg
     \vspace{2mm}\\
     Krunchy of mass $m$ rides on a disk of mass $6m$ and radius $R$ as shown. The disk rotates bround its central axis at angular speed 1.5$\rads$
 \end{shaded}
+\newpage
+
+\section{7/24}
+Final will be in class, online, no work submitted, no partial credit (Do lots of MOI calculations to prepare for final)
+\begin{shaded}
+    \underline{\bf{Example:} Putty on a Turntable}
+    \vspace{2mm}\\
+    A small blob of putty of mass $m$ falls from the ceiling and lands on the outer rim of a turntable of radius $R$ and moment of inertia $I_0$ that is rotating freely with angular speed $\omega_0$ about a vertical axis passing through the center of the turntable and perpendicular to the surface of the turntable
+    \begin{enumerate}
+        \item What is the post-collision angular speed of the turntable-putty system?
+        \item After several turns, the blob flies off the edge of the turntable. What is the angular speed of the turntable after the blob's departure?
+        \begin{enumerate}       
+            \item $I_{d,cm} = I_0,\ \omega_d = \omega_0$
+            \item $I_{mass} = mR^2,\ \omega' = ?,\ \tau_{ext} = 0$\\
+            $L_i = L_f\ \to\ \omega_0 = (I_0 + mR^2)$
+            \item $v = R\omega'$\\
+            $L = L_{I_0} + L_m$\\
+            $R\times P \to L = Rmv\ L_m = RmR\omega'$\\
+            $L_3 = I_0\omega'' + (mR^2)\omega'$\\
+            $L_2 = L_3$\\
+            $(I_0 + mR^2)\omega' = I_0\omega'' + (mR^2)\omega'$\\
+            $I_0\omega' = I_0\omega''$\\
+            $\omega' = \omega'' \neq \omega_0$
+        \end{enumerate}
+    \end{enumerate}
+\end{shaded}
+\begin{shaded}
+    \underline{\bf{Example:} Spinning Disks}
+    \vspace{2mm}\\
+    Two uniform disks with masses $M_1 = 2\kg$, $M_2 = 5\kg$, and radii $R_1 = 0.10\m,\ R_2 = 0.15\m$ are spinning freely about their center axis at frequencies $f_1 = 1200$ rpm, and $f_2 = 1500$ rpm. The cylinders are brought together and come to the same angular velocity via frictional contact. The moment of inertia of a uniform cylinder is given by $I = \frac{1}{2}MR^2$
+    \begin{enumerate}
+        \item[A.] Find the angular speed of each cylinder before they are joined\\
+        $\omega = 2\pi f$\\
+        $\omega_1 = 2\pi(1200$ rev/min$)(1$ min/60 s$) = 126\rads$\\
+        $\omega_2 = 2\pi(1500$ rev/min$)(1$ min/60 s$) = 157\rads$
+        \item[B.] Find the total kinetic energy of the two cylinders before they are joined\\
+        $M_1 = 2\kg,\ R_1 = 0.1\m,\ \omega_1 = 126\rads$ $M_2 = 5\kg,\ R_2 = 0.15\m,\ \omega_2 = 157\rads$\\
+        $L_i = L_f$\\
+        $L_{i,1} + L_{i,2} = L_f$\\
+        $I_1\omega_1 + I_2\omega_2 = (I_1 + I_2)\omega_f$\\
+        $\frac{1}{2}M_1R_1^2\omega_1 + \frac{1}{2}M_2R_2^2\omega_2 = (\frac{1}{2}M_1R_1^2 + \frac{1}{2}M_2R_2^2)\omega_f$\\
+        $\omega_f = \frac{\frac{1}{2}M_1R_1^2\omega_1 + \frac{1}{2}M_2R_2^2\omega_2}{\frac{1}{2}M_1R_1^2 + \frac{1}{2}M_2R_2^2}$\\
+        $\frac{1}{2}M_1R_1^2\omega_1 = 1.26\ \frac{1}{2}M_2R_2^2\omega_2 = 8.83\ \frac{1}{2}M_1R_1^2 = 0.1$
+        \item[C.] Find the angular speed of each cylinder after they couple
+    \end{enumerate}
+\end{shaded}
 
 \end{document}
