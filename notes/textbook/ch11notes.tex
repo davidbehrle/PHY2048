@@ -90,7 +90,7 @@ To analyze rolling without slipping, we first derive the linear variables of vel
         \centerarc[<-,very thick,latex-,black](0,0)(150:225:1.25);
 
         \node at (1.1,0.95){$\displaystyle \omega = \frac{v_{cm}}{r}$};
-        \node at (1.55,0.4){$\displaystyle \alpha = \frac{\alpha_{cm}}{r}$};
+        \node at (1.55,0.4){$\displaystyle \alpha = \frac{a_{cm}}{r}$};
         \node at (0,-2.2){(b) The wheel rolls without slipping};
     \end{tikzpicture}
     \hspace{5mm}
@@ -246,5 +246,120 @@ It is worthwile to repeat the equation derived in the example for the accelerati
     a_{cm} = \frac{mg\sin(\theta)}{1 + (\sfrac{I_{cm}}{r^2})}
 \end{equation}
 This equation is very useful for solving problems involving rolling without slipping. Note that the acceleration is less thana that of an object sliding down a frictionless plane with no rotation. The acceleration will also be different for two rotating objects with different rotational inertias.
+\vspace{2mm}\\
+\bf{Rolling Motion With Slipping}
+\vspace{2mm}\\
+In the case of rolling motion with slipping, we must use the coefficient of kinetic friction, which gives rise to the kinetic friction force since static friction is not present. In the case of slipping, $v_{cm} - r\omega \neq 0$, because the point $P$ on the wheel is not at rest on the surface, and $v_P \neq 0$. In this scenerio, $\omega \neq \frac{v_{cm}}{r}$ and $\alpha \neq \frac{a_{cm}}{r}$
+\begin{center}
+    \begin{tikzpicture}[scale=1.5]
+        \filldraw[black!35] (0,0) circle (1);
+        \draw[black,thick] (0,0) circle (1);
+
+        \draw[->,ultra thick,-latex,black!15!red] (0,0)--node[left,text=black]{$m\vec{g}$}(0,-0.95);
+        \draw[->,ultra thick,-latex,black!15!red] (0,-2)--node[left,text=black]{$\vec{N}$}(0,-1.05);
+        \draw[->,ultra thick,-latex,black!15!red] (0,0)--(1.75,0) node[right,text=black]{$\vec{F}$};
+        \draw[->,ultra thick,latex-,black!15!red] (1,-0.5)--(1.75,-0.5);
+        \node[right] at (1.75,-0.5){$\vec{f}_k$};
+        \node at (1.25,-1){$\vec{f}_k \leq \mu_kN$};
+
+        \filldraw[black] (0,0) circle  (1.25pt);
+        \node at (0,-2.2){(a) Forces on the wheel};
+    \end{tikzpicture}
+    \hspace{5mm}
+    \begin{tikzpicture}[scale=1.5]
+        \filldraw[black!35] (0,0) circle (1);
+        \draw[black,thick] (0,0) circle (1);
+
+        \draw[->,ultra thick,-latex,black!15!yellow!60!green] (0,-0.05)--node[below,text=black,xshift=-3mm]{$\vec{v}_{cm}$} (1.75,-0.05);
+        \draw[->,ultra thick,-latex,white!30!violet] (0,0.05)--node[above,text=black]{$\vec{a}_{cm}$} (1.25,0.05);
+        \filldraw[black!35!brown] (-1.5,-1) rectangle (1.5,-1.25);
+        \draw[line width=0.5pt,draw=black!70!brown] (-1.5,-1)--(1.5,-1);
+
+        \filldraw[black] (0,-1) circle (1.25pt) node[above]{$P$};
+        \filldraw[black] (0,0) circle (1.25pt);
+        \centerarc[<-,very thick,latex-,black](0,0)(150:225:1.25);
+
+        \node at (1.1,0.95){$\displaystyle \omega \neq \frac{v_{cm}}{r}$};
+        \node at (1.55,0.4){$\displaystyle \alpha \neq \frac{a_{cm}}{r}$};
+        \node at (0,-2.2){(b) The wheel is rolling and slipping};
+    \end{tikzpicture}
+\end{center}
+
+\begin{shaded}
+    \underline{\bf{Example 11.2:} Rolling Down an Inclined Plane With Slipping}
+    \vspace{2mm}\\
+    A solid cylinder rolls down an inclined plane from rest and undergoes slipping. It has a mass $m$ and a radius $r$.\vspace{1mm}\\
+    Draw a skech and free-body diagram showing the forces involved. The free-body diagram is similar to the no-slipping case except for the friction force, which is kinetic rather than static. Use Newton's second law to solve for the acceleration in the $x$ direction, and use Newton's second law of rotation to solve for the angular acceleration
+    \begin{center}
+        \begin{tikzpicture}
+            \filldraw[black!35] (0,0) circle (0.5);
+            \draw[black] (0,0) circle (0.5);
+
+            \draw[->,very thick,draw=black!15!red,-latex] (0,0)--({-cos(60)},{sin(60)}) node[above]{$\vec{N}$};
+            \draw[->,very thick,draw=black!15!red,-latex] (0,0)--({-0.8*cos(30)},{-0.8*sin(30)}) node[below,xshift=-1mm]{$mg\sin(\theta)$};
+            \draw[->,very thick,draw=black!15!red,-latex] (0,0)--({cos(60)},{-sin(60)}) node[below]{$-mg\cos(\theta)$};
+            \draw[->,very thick,draw=black!15!red,-latex] ({0.5*cos(60)},{-0.5*sin(60)})--({0.5*cos(60) + 0.8*cos(30)},{-0.5*sin(60) + 0.8*sin(30)}) node[right]{$-\vec{f}_k$};
+
+            \filldraw (0,0) circle (0.75pt);
+
+            \draw[->,latex-latex] ({1.5 - 0.4*cos(30)},{1 - 0.4*sin(30)})--(1.5,1)--({1.5 - 0.4*cos(60)},{1 + 0.4*sin(60)}) node[above,xshift=-1mm]{$y$};
+            \node[left] at ({1.5 - 0.4*cos(30)},{1 - 0.4*sin(30)}){$x$};
+        \end{tikzpicture}
+    \end{center}
+    \begin{enumerate}
+        \item[(a)] What is its linear acceleration?\\
+        The sum of the forces in the $y$ direction is zero, so the friction force is $f_k = \mu_kN = \mu_k$\\
+        Newton's second law in the $x$ direction becomes:
+        \begin{align*}
+            \sum F_x &= ma_x\\
+            mg\sin(\theta) - \mu_kmg&\cos(\theta) = ma_{cm,x}
+        \end{align*}
+        Which rearranges to 
+        \begin{align*}
+            a_{cm,x} = g\big(sin(\theta) - \mu_k\cos(\theta)\big)
+        \end{align*}
+        \item[(b)] What is its angular acceleration about an axis through the center of mass?\\
+        The friction force provides the only torque about the axis through the center of mass, so Newton's second law of rotation becomes:
+        \begin{align*}
+            \sum\tau_{cm} &= I_{cm}\alpha\\
+            f_kr &= I_{cm}\alpha = \frac{1}{2}mr^2\alpha
+        \end{align*}
+        Solving or $\alpha$ gives:
+        \begin{align*}
+            \alpha = \frac{2f_k}{mr} = \frac{2\mu_kg\cos(\theta)}{r}
+        \end{align*}
+    \end{enumerate}
+\end{shaded}
+\newpage
+
+\noindent\bf{Conservation of Mechanical Energy in Rolling Motion}
+\vspace{2mm}\\
+Any rolling object carries rotational kinetic energy, as well as translational kinetic energy and potential energy if the system requires. Including the gravitational potential energy, the total mechanical energy of a rolling object is:
+\begin{align*}
+    E_T = \frac{1}{2}mv^2_{cm} + \frac{1}{2}I_{cm}\omega^2 + mgh
+\end{align*}
+In the absence of any nonconservative forces that would take energy out of the system in the form of heat, the total energy of a rolling object without slipping is conserved and is constant throughout the motion. In a rolling object that is slipping, energy is not conserved, the production of heat is the result of kinetic friction and a rolling object encountering air resistance.\vspace{1mm}\\
+You may ask why a rolling object that is not slipping conserves energy, since the static friction force is nonconservative. The answer relates to the figure where point $P$ is shown in contact with the surface and at rest relative to the surface. Therefore the infinitesimal displacement $d\vec{r}$ with respect to the surface is zero and the incremental work done by the static friction is zero.
+\begin{shaded}
+    \underline{\bf{Example 11.3} Curiosity Rover}
+    \vspace{2mm}\\
+    The Curiosity rover was deployed on Mars on August 6, 2012. The wheels of the rover have a radius of 25 cm. Suppose astronauts arrive on Mars in the year 2050 and find the now inoperative Curiosity on the side of a basin. While they are dismantling the rover, an astronaut accidentially loses grip of one of the wheels, which rolls without slipping down into the bottom of the basin 25 meters below. If the wheel has a mass of 5 kg, what is its velocity at the bottom of the basin?\vspace{1mm}\\
+    To solve the problem, use conservation of mechanical energy. At the top of the hill, the wheel is at rest and has only potential energy, at the bottom is has rotational and translational kinetic energy which must be equal to the initial potential energy. Since the wheel rolls without slipping, $v_{cm} = r\omega$.
+    \vspace{1mm}\\
+    The energy at the top is equal to the energy at the bottom:
+    \begin{align*}
+        mgh = \frac{1}{2}mv_{cm}^2 + \frac{1}{2}I_{cm}\omega^2
+    \end{align*}
+    The known quantities are $I_{cm} = mr^2$, $r = 0.25$ m, and $f = 25.0$ m. Rewriting the energy conservation equation, to solve for $v_{cm}$, eliminating $\omega$ using $\omega = \frac{v_{cm}}{r^2}$ gives:
+    \begin{align*}
+        mgh &= \frac{1}{2}mv_{cm}^2 + \frac{1}{2}mr^2\frac{v_{cm}^2}{r^2}\\
+        gh &= \frac{1}{2}v_{cm}^2 + \frac{1}{2}v_{cm}^2\\
+        v_{cm} &= \sqrt{gh}
+    \end{align*}
+    On Mars, the acceleration of gravity is 3.71$mss$, which gives the magnitude of velocity at the bottom of the basin as:
+    \begin{align*}
+        v_{cm} = \sqrt{\big(3.71\mss\big)(25.0\m)} = 9.63\ms
+    \end{align*}
+\end{shaded}
 
 \end{document}
