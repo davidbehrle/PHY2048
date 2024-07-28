@@ -531,7 +531,7 @@ This states that the rate of change of the total angular momentum of a system is
             \node[left] at (0,4){4.0};
 
             %%% FORCES %%%
-            \draw[->,ultra thick,-latex,draw=black!10!red] (m1)--node[above,xshift=-4mm]{$\vec{F}_1 = -6.0\hat{i}\text{ N}$}(-3.5,1);
+            \draw[->,ultra thick,-latex,draw=black!10!red] (m1)--node[above,xshift=-5mm]{$\vec{F}_1 = -6.0\hat{i}\text{ N}$}(-3.5,1);
             \draw[->,ultra thick,-latex,draw=black!10!red] (m2)--(4,3.5) node[above,yshift=-1mm,xshift=-1mm]{$\vec{F}_2 = 10.0\hat{j}\text{ N}$};
             \draw[->,ultra thick,-latex,draw=black!10!red] (m3)--(2,-4) node[below]{$\vec{F}_3 = -8.0\hat{j}\text{ N}$};
 
@@ -662,6 +662,159 @@ This equation is analogous to the magnitude of the linear momentum $p = mv$. The
         \end{align*}
     \end{enumerate}
     The angular momentum in (a) is less than that of (b) due to the fact that the moment of inertia in (b) is greater than (a), while the angular velocity is the same
-\end{shaded} 
+\end{shaded}
+\newpage
+
+\subsection{Conservation of Angular Momentum}
+In previous sections, we have looked at the angular momentum of systems consisting of point particles and rigid bodies. We have also analyzed the torques involved, using the expression that relates the net external torque to the change in angular momentum. However, suppose that there is no external torque on the system, $\sum\vec{\tau} = 0$. In this case, equation 8 becomes the law of conservation of angular momentum
+\vspace{1mm}\\
+The angular momentum of a system of particles around a point in a fixed inertial reference frame is conserved if there is no net external torque around that point
+\begin{equation}
+    \der{\vec{L}}{t} = 0
+\end{equation}
+Or,
+\begin{equation}
+    \vec{L} = \vec{l}_1 + \vec{l}_2 + ... + \vec{l}_N = \text{constant}
+\end{equation}
+Note that the total angular momentum $\vec{L}$ is conserved. Any of the individual angular momenta can change as long as their sum remains constant. This law is analogous to linear momentum being conserved when the external force on a system is zero.
+\vspace{1mm}\\
+As an example of conservation of angular momentum, consider an ice skater executing a spin. The net torque on the skater is very close to zero because there is relatively little friction between their skates and the ice. Also the friction is exerted very close to the pivot point. Both $|\vec{F}|$ and $|\vec{r}|$ are relatively small so $|\vec{\tau}|$ is negligible. As a result, they can spin for quite some time. They are also able to increase the rate of their spin by pulling their arms and legs in. Why does this increase the rate of the spin? Because the skater's angular momentum is constant so that
+\begin{align*}
+    L_f = L_0
+\end{align*}
+Or,
+\begin{align*}
+    I_f\omega_f = I_0\omega_0
+\end{align*}
+Because $I_2$ is smaller, the angular velocity $\omega_2$ must increase to keep the angular momentum constant. It is interesting to see how the rotational kinetic energy of the skater changes when they pull their arms in. Their initial rotational energy is
+\begin{align*}
+    K_0 = \frac{1}{2}I_0\omega_0^2
+\end{align*}
+Whereas their final rotational energy is
+\begin{align*}
+    K_f = \frac{1}{2}I_f\omega_f^2
+\end{align*}
+Since $I_f\omega_f = I_0\omega_0$, we can substitute for $\omega$ to find:
+\begin{align*}
+    K_f = \frac{1}{2}I_f\omega_f^2 = \frac{1}{2}I_f\bigg(\frac{I_0}{I_f}\omega_0\bigg)^2 = \frac{1}{2}I_0\omega_0^2\bigg(\frac{I_0}{I_f}\bigg) = K_0\bigg(\frac{I_0}{I_f}\bigg)
+\end{align*}
+Because their moment of inertia has decreased, $I_f < I_0$, their final rotational kinetic energy has increased. The source of this additional rotational kinetic energy is the work required to pull her arms inward. Note that the skater's arms do not move in a perfect circle, they spiral inward. This work causes an increase in the rotational kinetic energy, while their angular momentum remains constant. Since they are in a frictionless environment, no energy escapes the system. If they were to extend their arms to their original positions, they would rotate at their original angular velocity and their kinetic energy would return to its original value.
+\vspace{1mm}\\
+The solar system is another example of how conervation of angular momentum works in our universe. Our solar system was born from a huge cloud of gas and dust that initially had rotational energy. Gravitational forces caused the cloud to contract, and the rotation rate increased as a result of conservation of angular momentum.
+
+\newpage
+\begin{shaded}
+    \underline{\bf{Example 11.7:} Coupled Flywheels}
+    \vspace{2mm}\\
+    A flywheel rotates without friction at an angular velocity $\omega_0 = 600$ rev/min on a frictionless vertical shaft of negligible rotational inertia. A second flywheel, which is at rest and has a moment of inertia three times that of the rotating flywheel, is dropped onto it. Because friction exists between the surfaces, the flywheels very quickly reach the same rotational velocity, after which they spin together.
+    \begin{center}
+        \begin{tikzpicture}
+            %%% BOTTOM %%%
+            \filldraw[black!60] (-0.1,0) rectangle (0.1,-1);
+            \draw[black!75,thick] (0,-1.015) ellipse (0.1 and 0.05);
+            \filldraw[black!60] (0,-1) ellipse (0.1 and 0.05);
+            \draw[line width=0.625pt,black!75] (0.1,-0.5)--(0.1,-1.02);
+            \draw[line width=0.625pt,black!75] (-0.1,-0.5)--(-0.1,-1.02);
+
+            \filldraw[black!60] (0,0) ellipse (1 and 0.5);
+            \draw[black!75,very thick] (0,0) ellipse (1 and 0.5);
+            \filldraw[black!75] (0,0) ellipse (1pt and 0.5pt);
+            \node[yshift=-1mm] at (0,-1.02){\AxisRotator[x=0.2cm,y=0.4cm,rotate=-90]};
+
+            \node at ({1.1*cos(45)},{1.1*sin(45) - 0.2}){$l_0$};
+            %%% TOP %%%
+            \filldraw[black!60] (0,1.2) ellipse (1 and 0.5);
+            \draw[black!75,very thick] (0,1.2) ellipse (1 and 0.5);
+            \draw[black!75,thick] (0,1.2) ellipse (0.1 and 0.05);
+            \filldraw[black!60] (-0.1,1.2) rectangle (0.1,2.2);
+            \filldraw[black!60] (0,2.2) ellipse (0.1 and 0.05);
+            \draw[black!75,thick] (0,2.2) ellipse (0.1 and 0.05);
+            \draw[line width=0.625pt,black!75] (0.1,2.2)--(0.1,1.2);
+            \draw[line width=0.625pt,black!75] (-0.1,2.2)--(-0.1,1.2);
+
+            \node at ({1.1*cos(45)},{1.1*sin(45) + 1.2}){$3l_0$};
+        \end{tikzpicture}
+        \hspace{10mm}
+        \begin{tikzpicture}
+            \filldraw[black!60] (-0.1,0) rectangle (0.1,-1);
+            \draw[black!75,thick] (0,-1.015) ellipse (0.1 and 0.05);
+            \filldraw[black!60] (0,-1) ellipse (0.1 and 0.05);
+            \draw[line width=0.625pt,black!75] (0.1,-0.5)--(0.1,-1.02);
+            \draw[line width=0.625pt,black!75] (-0.1,-0.5)--(-0.1,-1.02);
+
+            \filldraw[black!60] (0,0) ellipse (1 and 0.5);
+            \draw[black!75,very thick] (0,0) ellipse (1 and 0.5);
+            \filldraw[black!75] (0,0) ellipse (1pt and 0.5pt);
+            \node[yshift=-1mm] at (0,1.02){\AxisRotator[x=0.2cm,y=0.4cm,rotate=90]};
+
+            \draw[black!75,thick] (0,0) ellipse (0.1 and 0.05);
+            \filldraw[black!60] (-0.1,0) rectangle (0.1,1);
+            \filldraw[black!60] (0,1) ellipse (0.1 and 0.05);
+            \draw[black!75,thick] (0,1) ellipse (0.1 and 0.05);
+            \draw[line width=0.625pt,black!75] (0.1,1)--(0.1,0);
+            \draw[line width=0.625pt,black!75] (-0.1,1)--(-0.1,0);
+
+            \node at (0,-1.8){};
+        \end{tikzpicture}
+    \end{center}
+    \begin{enumerate}
+        \item[(a)] Use the law of conservation of angular momentum to determine the angular velocity $\omega$ of the combination\vspace{1mm}\\
+        No external torque acts on the system, the force due to friction produces an internal torque, which does not affect the angular momentum of the system. Therefore conservation of angular momentum gives:
+        \begin{align*}
+            I_0\omega_0 &= (I_0 + 3I_0)\omega\\
+            \omega &= \frac{1}{4}\omega_0 = 150\text{ rev/min} = 15.7\rads
+        \end{align*}
+        \item[(b)] What fraction of the initial kinetic energy is lost in the coupling of the flywheels?\vspace{1mm}\\
+        Before contact, only one flywheel is rotating. The rotational kinetic energy of this flywheel is the initial rotational kinetic energy of the system, $\frac{1}{2}I_0\omega^2_0$. The final kinetic energy is:
+        \begin{align*}
+            \frac{1}{2}(4I_0)\omega^2 = \frac{1}{2}(4I_0)\Big(\frac{\omega}{4}\Big)^2 = \frac{1}{8}I_0\omega_0^2
+        \end{align*}
+        Therefore the ratio of the final kinetic energy to the initial kinetic energy is 
+        \begin{align*}
+            \frac{\frac{1}{8}I_0\omega_0^2}{\frac{1}{2}I_0\omega_0^2} = \frac{1}{4}
+        \end{align*}
+        Thus, $\sfrac{3}{4}$ of the initial kinetic energy is lost to the coupling of the two flywheels
+    \end{enumerate}
+\end{shaded}
+
+\begin{shaded}
+    \underline{\bf{Example 11.8:} Dismount From a High Bar}
+    \vspace{2mm}\\
+    An 80.0 kg gymnast dismounts from a high bar. He starts the dismount at full extension, then tucks to complete a number of revolutions before landing. His moment of inertia when fully extended can be approximated as a rod of length 1.8 m and when in the tuck, a rod of half that length. If his rotation rate at full extension is 1.0 rev/s and he enters the tuck when his center of mass is at 3.0 m height moving horizontally to the floor, how many revolutions can he execute if he comes out of the tuck at 1.8 m height?
+    \vspace{1mm}\\
+    The moment of inertia at full extension is $\displaystyle I_0 = \frac{1}{12}mL^2 = \frac{1}{12}(80.0\kg)(1.8\m)^2 = 21.6\kgmm$\\
+    The moment of inertia in the tuck is $\displaystyle I_f = \frac{1}{12}mL_f^2 = \frac{1}{12}(80.0\kg)(0.9\m)^2 = 5.4\kgmm$\\
+    Conservation of angular momentum:
+    \begin{align*}
+        I_f\omega_f = I_0\omega_0\ \to\ \omega_f = \frac{I_0\omega_0}{I_f} = \frac{(21.6\kgmm)(1.0\text{ rev/s})}{5.4\kgmm} = 4.0\text{ rev/s}
+    \end{align*}
+    The time interval in the tuck $\displaystyle t = \sqrt{\frac{2h}{g}} = \sqrt{\frac{2(3.0 - 1.8\m)}{9.8\mss}} = 0.5\s$
+    In 0.5 s, he will be able to execute two revolutions at 4.0 rev/sec
+\end{shaded}
+
+\newpage
+\begin{shaded}
+    \underline{\bf{Example 11.9:} Conservation of Angular Momentum of a Collision}
+    \vspace{2mm}\\
+    A bullet of mass $m = 2.0$ g is moving horizontally with a speed of $500\ms$. The bullet strikes and becomes embedded in the edge of a solid disk of mass $M = 3.2$ kg and radius $R = 0.5\m$. The cylinder is free to rotate around its axis and is initially at rest. What is the angular velocity of the disk immediately after the bullet is embedded?
+    \vspace{1mm}\\
+    For the system of the bullet and the cylinder, no external torque acts along the vertical axis through the center of the disk. Thus, the angular momentum along this axis is conserved. The initial angular momentum of the system is $mvR$, which is taken about the rotational axis of the disk the moment before the collision. The initial angular momentum of the cylinder is zero. Thus the net angular momentum of the system is $mvR$. Since the angular momentum is conserved, the initial angular momentum of the system is equal to the angular momentum of the bullet embedded in the disk immediately after impact.
+    \vspace{1mm}\\
+    The initial angular momentum of the system is: $L_0 = mvR$\\
+    The moment of inertia of the system with the bullet embedded in the disk is:
+    \begin{align*}
+        I = mR^2 + \frac{1}{2}MR^2 = \bigg(m + \frac{M}{2}\bigg)R^2
+    \end{align*}
+    The final angular momentum of the system is: $L_f = I\omega_f$\\
+    Thus by conservation of angular momentum, $L_0 = L_f$, and
+    \begin{align*}
+        mvR = \bigg(m + \frac{M}{2}\bigg)R^2\omega_f
+    \end{align*}
+    Solving for $\omega_f$ gives:
+    \begin{align*}
+        \omega_f = \frac{mvR}{(m + \sfrac{M}{2})R^2} = \frac{(2.0\cdot10^{-3}\kg)(500.0\ms)}{(2.0\cdot10^{-3}\kg + 1.6\kg)(0.50\m)} = 1.2\rads
+    \end{align*}
+    The system is composed of both a point particle and a rigid body. Care must be taken when formulating the angular momentum before and after the collision. Just before impact the angular momentum of the bullet is taken about the rotational axis of the disk.
+\end{shaded}
 
 \end{document}
