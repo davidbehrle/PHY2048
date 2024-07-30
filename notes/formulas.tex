@@ -6,13 +6,10 @@
 \usepackage{gensymb}
 \usepackage{physics}
 \usepackage{graphicx}
-\usepackage[colorinlistoftodos]{todonotes}
 \usepackage{xcolor}
 \usepackage{array}
-\usepackage{tabularx}
 \usepackage{tikz}
 \usepackage{pgfplots}
-\usepackage{framed}
 \usepackage{xfrac}
 \usepackage[most]{tcolorbox}
 \usepackage{fix-cm}
@@ -20,10 +17,8 @@
 \usepackage[margin=0.1in]{geometry}
 \usepackage{multicol}
 \usepackage{setspace}
-\usetikzlibrary{quotes,angles}
-\usetikzlibrary{decorations.pathreplacing}
-\usetikzlibrary{calc}
-\usepgfplotslibrary{fillbetween}
+\usepackage{pagecolor}
+\usepackage{esint}
 
 \let\phi\varphi
 \let\bf\textbf
@@ -55,14 +50,26 @@
 \title{PHY 2048 Formulas}
 
 \begin{document}
+\definecolor{bg0}{HTML}{282828}
+\definecolor{fg0}{HTML}{fbf1c7}
+\definecolor{fg1}{HTML}{ebdbb2}
+\definecolor{gbaqua}{HTML}{8ec07c}
+\definecolor{gbred}{HTML}{fb4934}
+\definecolor{gbgreen}{HTML}{b8bb26}
+\definecolor{gbyellow}{HTML}{fabd2f}
+\definecolor{gbblue}{HTML}{83a598}
+\definecolor{gbpurple}{HTML}{d3869b}
+\definecolor{gborange}{HTML}{fe8019}
+\color{bg0}
+\pagecolor{fg0}
 
 \begin{center}{\huge{\bf{PHY 2048 Formulas}}}
 \end{center}
 
 \begin{multicols*}{3}
 
-    \tikzstyle{mybox} = [draw=black,fill=white,very thick,rectangle,rounded corners, inner sep=10pt, inner ysep=10pt]
-    \tikzstyle{fancytitle} = [fill=black,text=white,font=\bfseries]
+    \tikzstyle{mybox} = [draw=bg0,fill=fg0,very thick,rectangle,rounded corners, inner sep=10pt, inner ysep=10pt]
+    \tikzstyle{fancytitle} = [draw=bg0,fill=gbaqua,text=bg0,font=\bfseries,rounded corners]
 
     %%% DOT AND CROSS PRODUCTS %%%
     \begin{tikzpicture}
@@ -72,7 +79,7 @@
             $\vec{A} \times \vec{B} = AB\sin(\phi)$
         \end{minipage}
         };
-        \node[fancytitle,right=10pt] at (box.north west) {Dot and Cross Product};
+        \node[fancytitle,right=10pt,fill=gbred] at (box.north west) {Dot and Cross Product};
     \end{tikzpicture}
 
     %%% TRANSLATIONAL KINEMATICS %%%
@@ -85,20 +92,7 @@
             $\displaystyle v^2 = v_0^2 + 2a(\Delta x)$
         \end{minipage}
         };
-        \node[fancytitle,right=10pt] at (box.north west) {Translational Kinematics};
-    \end{tikzpicture}
-
-    %%% ROTATIONAL KINEMATICS %%%
-    \begin{tikzpicture}
-        \node[mybox] (box){
-        \begin{minipage}{0.25\textwidth}
-            $\displaystyle \theta_f = \theta_0 + \omega t$\\
-            $\displaystyle \omega_f = \omega_0 + \alpha t$\\
-            $\displaystyle \theta_f = \theta_0 + \omega_0t + \frac{1}{2}\alpha t^2$\\
-            $\displaystyle \omega_f^2 = \omega_0^2 + 2\alpha(\Delta\theta)$
-        \end{minipage}
-        };
-        \node[fancytitle,right=10pt] at (box.north west) {Rotational Kinematics};
+        \node[fancytitle,right=10pt,fill=gbgreen] at (box.north west) {Translational Kinematics};
     \end{tikzpicture}
 
     %%% PROJECTILE MOTION %%%
@@ -106,36 +100,43 @@
         \node[mybox] (box){
         \begin{minipage}{0.25\textwidth}
             \bf{Time of flight:} $T = \frac{2v_0\sin(\theta_0)}{g}$\\
-            \bf{Trajectory:}\\ $\displaystyle y = x\tan(\theta) - \bigg[\frac{g}{2(v_0\cos(\theta))^2}\bigg]x^2$\vspace{1.5mm}\\
+            \bf{Trajectory:}\\ $\displaystyle y = x\tan(\theta) - \bigg[\frac{g}{2(v_0\cos(\theta))^2}\bigg]x^2$\vspace{2mm}\\
             \bf{Range:} $\displaystyle \frac{v_0^2\sin(2\theta_0)}{g}$
         \end{minipage}
         };
-        \node[fancytitle,right=10pt] at (box.north west) {Projectile Motion};
+        \node[fancytitle,right=10pt,fill=gbyellow] at (box.north west) {Projectile Motion};
     \end{tikzpicture}
 
     %%% UNIFORM CIRCULAR MOTION %%%
     \begin{tikzpicture}
         \node[mybox] (box){
         \begin{minipage}{0.25\textwidth}
-            $\displaystyle a_c = \frac{v_T^2}{r}$\vspace{2mm}\\
-            $\displaystyle \omega = \frac{2\pi}{T}$\vspace{2mm}\\
-            $\displaystyle T = \frac{2\pi}{V}$\vspace{2mm}\\
-            $\displaystyle r = \frac{v^2}{g}$
+            \vspace{2mm}$\displaystyle a_c = \frac{v_T^2}{r}$ \hspace{15mm} $\displaystyle T = \frac{2\pi}{V}$\vspace{2mm}\\
+            $\displaystyle \omega = \frac{2\pi}{T}$ \hspace{15mm} $\displaystyle r = \frac{v^2}{g}$
         \end{minipage}
         };
-        \node[fancytitle,right=10pt] at (box.north west) {Uniform Circular Motion};
+        \node[fancytitle,right=10pt,fill=gbblue] at (box.north west) {Uniform Circular Motion};
     \end{tikzpicture}
 
     %%% ORBITAL MOTION %%%
     \begin{tikzpicture}
         \node[mybox] (box){
         \begin{minipage}{0.25\textwidth}
-            $\displaystyle F_{c} = F_g$\vspace{2mm}\\
-            $\displaystyle v = \sqrt{\frac{GM}{r}}$\vspace{2mm}\\
+            \vspace{2mm}$\displaystyle v = \sqrt{\frac{GM}{r}}$\vspace{2mm}\\
             $\displaystyle v = \frac{2\pi r}{T}$
         \end{minipage}
         };
-        \node[fancytitle,right=10pt] at (box.north west) {Orbital Motion};
+        \node[fancytitle,right=10pt,fill=gbpurple] at (box.north west) {Orbital Motion};
+    \end{tikzpicture}
+
+    %%% TERMINAL VELOCITY %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            \vspace{1.5mm}$\displaystyle v_T = \sqrt{\frac{2mg}{\rho CA}}$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt] at (box.north west) {Terminal Velocity};
     \end{tikzpicture}
 
     %%% NEWTON'S LAWS %%%
@@ -147,7 +148,7 @@
             3. $\vec{F}_{AB} = -\vec{F}_{BA}$
         \end{minipage}
         };
-        \node[fancytitle,right=10pt] at (box.north west) {Newton's Laws};
+        \node[fancytitle,right=10pt,fill=gborange] at (box.north west) {Newton's Laws};
     \end{tikzpicture}
 
     %%% COMMON FORCES %%%
@@ -161,17 +162,17 @@
             $\displaystyle F_c = ma_c = m\frac{v^2}{r} = mr\omega^2$
         \end{minipage}
         };
-        \node[fancytitle,right=10pt] at (box.north west) {Common Forces};
+        \node[fancytitle,right=10pt,fill=gbred] at (box.north west) {Common Forces};
     \end{tikzpicture}
 
-    %%% TERMINAL VELOCITY %%%
+    %%% CONSERVATIVE FORCE %%%
     \begin{tikzpicture}
         \node[mybox] (box){
         \begin{minipage}{0.25\textwidth}
-            $\displaystyle v_T = \sqrt{\frac{2mg}{\rho CA}}$
+            \vspace{2mm}$\displaystyle \der{F_x}{y} = \der{F_y}{x}$
         \end{minipage}
         };
-        \node[fancytitle,right=10pt] at (box.north west) {Terminal Velocity};
+        \node[fancytitle,right=10pt,fill=gbgreen] at (box.north west) {Conservative Force};
     \end{tikzpicture}
 
     %%% WORK %%%
@@ -185,29 +186,180 @@
             $W_f = \mu_kNd = \mu_kmgd$
         \end{minipage}
         };
-        \node[fancytitle,right=10pt] at (box.north west) {Work};
+        \node[fancytitle,right=10pt,fill=gbyellow] at (box.north west) {Work};
+    \end{tikzpicture}
+
+    %%% ENERGY %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $\displaystyle K_t = \frac{1}{2}mv^2 = \frac{p^2}{2m}$\\
+            $\displaystyle K_r = \frac{1}{2}I\omega^2$
+            $U_g = mgh$\\
+            $\displaystyle U_{sp} = \frac{1}{2}k(x_f^2 - x_0^2)$\\
+            $\Delta K_{AB} = -\Delta U_{AB}$\\
+            \boldmath{$\vec{F}_{con}$}\bf{, closed path:}\\
+            \unboldmath$\displaystyle W = \oint \vec{F} \cdot d\vec{r} = 0$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt,fill=gbblue] at (box.north west) {Energy};
     \end{tikzpicture}
 
     %%% WORK ENERGY THEOREM %%%
     \begin{tikzpicture}
         \node[mybox] (box){
         \begin{minipage}{0.25\textwidth}
-            \vspace{1mm} $W_{net} = \Delta K = K_f - K_0$
+            \vspace{1mm} $W_{net} = \Delta K = K_f - K_0$\\
+            $W_{net} = -\Delta U = U_f - U_0$
         \end{minipage}
         };
-        \node[fancytitle,right=10pt] at (box.north west) {Work-Energy Theorem};
+        \node[fancytitle,right=10pt,fill=gbpurple] at (box.north west) {Work-Energy Theorem};
     \end{tikzpicture}
-    %%% ENERGY %%%
 
+    %%% CONSERVATION OF ENERGY %%%
     \begin{tikzpicture}
         \node[mybox] (box){
         \begin{minipage}{0.25\textwidth}
-            $\displaystyle K = \frac{1}{2}mv^2 = \frac{p^2}{2m}$\\
-            $U_g = mgh$\\
-            $\displaystyle U_{sp} = \frac{1}{2}k(x_f^2 - x_0^2)$
+            \vspace{1mm}\bf{With conservative forces:}\\
+            $K_A + U_A =  K_B + U_B$\\
+            $W_{nc} = \Delta(K + U) = \Delta E$
         \end{minipage}
         };
-        \node[fancytitle,right=10pt] at (box.north west) {Energy};
+        \node[fancytitle,right=10pt] at (box.north west) {Conservation of Energy};
+    \end{tikzpicture}
+
+    %%% LINEAR MOMENTUM & IMPULSE %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $\vec{p} = m\vec{v}$\\
+            $\vec{J} = \Delta p = m\Delta v$\\
+            $\displaystyle \vec{J} = \vec{F}_{avg}\Delta t \to \vec{F}_{avg} = \frac{\Delta\vec{p}}{\Delta t}$\\
+            $\displaystyle \vec{J} = \int_{t_0}^{t_f}\vec{F}(t)dt$\vspace{2mm}\\
+            $\displaystyle \vec{F} = \der{\vec{p}}{t}$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt,fill=gborange] at (box.north west) {Momentum \& Impulse};
+    \end{tikzpicture}
+
+    %%% ROLLING MOTION %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            %\bf{(Without slipping)}\\
+            $\displaystyle a_{cm} = \frac{mg\sin(\theta)}{1 + (\sfrac{I_{cm}}{r^2})}$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt,fill=gbred] at (box.north west) {Rolling Motion, No Slipping};
+    \end{tikzpicture}
+
+    %%% CONSERVATION OF MOMENTUM %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            If:\\
+            1. $\displaystyle \bigg[\frac{dm}{dt}\bigg]_{sys} = 0,\ $ and\\
+            2. $\vec{F}_{ext} = 0,\ $ then:\\
+            $\displaystyle \der{}{t}(\vec{p}_0 + \vec{p}_f) = 0$\\
+            $\displaystyle \sum_{j = 1}^{N}\vec{p}_j = \text{constant}$\vspace{2mm}\\
+            $\vec{v}_{cm,f} = \vec{v}_{cm,0}$
+        \end{minipage}
+        };
+        \draw[-] (-2.75,-1.75)--(2.75,-1.75);        
+        \node[fancytitle,right=10pt,fill=gbgreen] at (box.north west) {Conservation of Momentum};
+    \end{tikzpicture}
+
+    %%% CENTER OF MASS %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            \bf{System of particles:}\\
+            $\displaystyle \vec{r}_{cm} = \frac{1}{M}\sum_{j = 1}^{N}m_j\vec{r}_j$\\
+            $\displaystyle v_{cm} = \der{\vec{r}_{cm}}{t} = \frac{1}{M}\sum_{j = 1}^{N}m_j\der{\vec{r}_j}{t}$\\
+            $M\vec{v}_{cm} = \sum_{j = 1}^{N}m_j\vec{v}_j$\\
+            \bf{Continuous object:}\\
+            $\displaystyle \vec{r}_{cm} = \frac{1}{M}\int\vec{r}dm$
+        \end{minipage}
+        };
+        \draw[-] (-2.75,-1)--(2.75,-1);
+        \node[fancytitle,right=10pt,fill=gbyellow] at (box.north west) {Center of Mass};
+    \end{tikzpicture}
+
+    %%% ROTATIONAL VARIABLES %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $\displaystyle \theta = \frac{s}{r}$\\
+            $\displaystyle \omega = \frac{v_t}{r} = \der{\theta}{t}$\\
+            $\displaystyle \alpha = \frac{a_t}{r} = \der{\omega}{t}$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt,fill=gbblue] at (box.north west) {Rotational Variables};
+    \end{tikzpicture}
+
+    %%% ROTATIONAL KINEMATICS %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $\displaystyle \theta_f = \theta_0 + \omega t$\\
+            $\displaystyle \omega_f = \omega_0 + \alpha t$\\
+            $\displaystyle \theta_f = \theta_0 + \omega_0t + \frac{1}{2}\alpha t^2$\\
+            $\displaystyle \omega_f^2 = \omega_0^2 + 2\alpha(\Delta\theta)$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt,fill=gbpurple] at (box.north west) {Rotational Kinematics};
+    \end{tikzpicture}
+
+    %%% MOMENT OF INERTIA %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $\displaystyle I = \sum_{i} m_ir_i^2$\\
+            $\displaystyle I = \int r^2dm$\\
+            $\displaystyle I_{tot} = \sum_{i}I_i$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt] at (box.north west) {Moment of Inertia};
+    \end{tikzpicture}
+
+    %%% PARALLEL AXIS THEOREM %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $I_{pa} = I_{cm} + md^2$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt,fill=orange] at (box.north west) {Parallel Axis Theorem};
+    \end{tikzpicture}
+    
+    %%% TORQUE %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $\tau = \vec{r} \times \vec{F} = rF\sin(\theta) = I\alpha$\\
+            $\displaystyle \tau_{net} = \sum_{i}\tau_i = I\alpha$\\
+            $\displaystyle W = \int\sum\vec{\tau} \cdot d\vec{\theta}$\\
+            $\displaystyle W_{AB} = \int\limits_{\theta_a}^{\text{ }\theta_B}\bigg(\sum_{i}\tau_i\bigg)d\theta$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt,fill=gbred] at (box.north west) {Torque};
+    \end{tikzpicture}
+
+    %%% ANGULAR MOMENTUM %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $\vec{l} = \vec{r} \times \vec{p}\ \to\ l = rp\sin(\theta)$\\
+            $L = I\omega$
+            \vspace{2mm}\\
+            $\displaystyle \der{\vec{L}}{t} = \sum_{i}\der{\vec{l}_i}{t} = \sum_{i}\tau_i$\vspace{2mm}\\
+            \bf{Conservation of }\boldmath{$\vec{L}$}\unboldmath\\
+            If: $\displaystyle \sum\vec{\tau} = 0$\\
+            Then: $\displaystyle \der{\vec{L}}{t} = 0\ \to\ I_f\omega_f = I_0\omega_0$, 
+        \end{minipage}
+        };
+        \draw[-] (-2.75,-0.15)--(2.75,-0.15);
+        \node[fancytitle,right=10pt,fill=gbgreen] at (box.north west) {Angular Momentum};
     \end{tikzpicture}
 \end{multicols*}
 \end{document}
