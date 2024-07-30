@@ -179,7 +179,7 @@
     \begin{tikzpicture}
         \node[mybox] (box){
         \begin{minipage}{0.25\textwidth}
-            $\displaystyle W_{AB} = \int\limits_{A}^{B}\vec{F} \cdot d\vec{r}$\\
+            $\displaystyle W_{AB} = \int_{A}^{B}\vec{F} \cdot d\vec{r}$\vspace{2mm}\\
             $W = \vec{F} \cdot \vec{d} = Fd\cos(\theta)$\\
             $W_g = -mg\Delta y$\\
             $\displaystyle W_{sp} = \frac{1}{2}k(x_f^2 - x_0^2)$\\
@@ -194,12 +194,11 @@
         \node[mybox] (box){
         \begin{minipage}{0.25\textwidth}
             $\displaystyle K_t = \frac{1}{2}mv^2 = \frac{p^2}{2m}$\\
-            $\displaystyle K_r = \frac{1}{2}I\omega^2$
+            $\displaystyle K_r = \frac{1}{2}I\omega^2$\\
             $U_g = mgh$\\
             $\displaystyle U_{sp} = \frac{1}{2}k(x_f^2 - x_0^2)$\\
             $\Delta K_{AB} = -\Delta U_{AB}$\\
-            \boldmath{$\vec{F}_{con}$}\bf{, closed path:}\\
-            \unboldmath$\displaystyle W = \oint \vec{F} \cdot d\vec{r} = 0$
+            $\displaystyle W = \oint \vec{F} \cdot d\vec{r} = 0\ $ (closed path)
         \end{minipage}
         };
         \node[fancytitle,right=10pt,fill=gbblue] at (box.north west) {Energy};
@@ -228,11 +227,11 @@
         \node[fancytitle,right=10pt] at (box.north west) {Conservation of Energy};
     \end{tikzpicture}
 
-    %%% LINEAR MOMENTUM & IMPULSE %%%
+    %%% MOMENTUM & IMPULSE %%%
     \begin{tikzpicture}
         \node[mybox] (box){
         \begin{minipage}{0.25\textwidth}
-            $\vec{p} = m\vec{v}$\\
+            \vspace{1mm}$\vec{p} = m\vec{v}$\\
             $\vec{J} = \Delta p = m\Delta v$\\
             $\displaystyle \vec{J} = \vec{F}_{avg}\Delta t \to \vec{F}_{avg} = \frac{\Delta\vec{p}}{\Delta t}$\\
             $\displaystyle \vec{J} = \int_{t_0}^{t_f}\vec{F}(t)dt$\vspace{2mm}\\
@@ -284,6 +283,7 @@
         \draw[-] (-2.75,-1)--(2.75,-1);
         \node[fancytitle,right=10pt,fill=gbyellow] at (box.north west) {Center of Mass};
     \end{tikzpicture}
+    \vspace{0.4mm}
 
     %%% ROTATIONAL VARIABLES %%%
     \begin{tikzpicture}
@@ -296,6 +296,7 @@
         };
         \node[fancytitle,right=10pt,fill=gbblue] at (box.north west) {Rotational Variables};
     \end{tikzpicture}
+    \vspace{0.4mm}
 
     %%% ROTATIONAL KINEMATICS %%%
     \begin{tikzpicture}
@@ -309,18 +310,20 @@
         };
         \node[fancytitle,right=10pt,fill=gbpurple] at (box.north west) {Rotational Kinematics};
     \end{tikzpicture}
+    \vspace{0.4mm}
 
     %%% MOMENT OF INERTIA %%%
     \begin{tikzpicture}
         \node[mybox] (box){
         \begin{minipage}{0.25\textwidth}
-            $\displaystyle I = \sum_{i} m_ir_i^2$\\
+            $\displaystyle I = \sum_{i} m_ir_i^2$\vspace{0.1mm}\\
             $\displaystyle I = \int r^2dm$\\
             $\displaystyle I_{tot} = \sum_{i}I_i$
         \end{minipage}
         };
         \node[fancytitle,right=10pt] at (box.north west) {Moment of Inertia};
     \end{tikzpicture}
+    \vspace{0.4mm}
 
     %%% PARALLEL AXIS THEOREM %%%
     \begin{tikzpicture}
@@ -331,19 +334,21 @@
         };
         \node[fancytitle,right=10pt,fill=orange] at (box.north west) {Parallel Axis Theorem};
     \end{tikzpicture}
-    
+    \vspace{0.4mm}
+
     %%% TORQUE %%%
     \begin{tikzpicture}
         \node[mybox] (box){
         \begin{minipage}{0.25\textwidth}
             $\tau = \vec{r} \times \vec{F} = rF\sin(\theta) = I\alpha$\\
             $\displaystyle \tau_{net} = \sum_{i}\tau_i = I\alpha$\\
-            $\displaystyle W = \int\sum\vec{\tau} \cdot d\vec{\theta}$\\
-            $\displaystyle W_{AB} = \int\limits_{\theta_a}^{\text{ }\theta_B}\bigg(\sum_{i}\tau_i\bigg)d\theta$
+            $\displaystyle W = \int\sum\vec{\tau} \cdot d\vec{\theta}$\vspace{1mm}\\
+            $\displaystyle W_{AB} = \int_{\theta_a}^{\theta_B}\bigg(\sum_{i}\tau_i\bigg)d\theta$
         \end{minipage}
         };
         \node[fancytitle,right=10pt,fill=gbred] at (box.north west) {Torque};
     \end{tikzpicture}
+    \vspace{0.4mm}
 
     %%% ANGULAR MOMENTUM %%%
     \begin{tikzpicture}
