@@ -1,0 +1,222 @@
+\documentclass[a4paper]{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{framed}
+\usepackage{xfrac}
+\usepackage[most]{tcolorbox}
+\usepackage{fix-cm}
+\usepackage{cancel}
+\usepackage[margin=0.1in]{geometry}
+\usepackage{multicol}
+\usepackage{setspace}
+\usetikzlibrary{quotes,angles}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{calc}
+\usepgfplotslibrary{fillbetween}
+
+\let\phi\varphi
+\let\bf\textbf
+\colorlet{shadecolor}{orange!15}
+\pgfplotsset{compat=1.18}
+\newcommand\der[2]{\frac{d #1}{d #2}}
+\newcommand\Deltat{\Delta t}
+\newcommand\rads{\text{ rad\;s}^{-1}}
+\newcommand\radss{\text{ rad\;s}^{-2}}
+\newcommand\rad{\text{ rad}}
+\newcommand\s{\text{ s}}
+\newcommand\m{\text{ m}}
+\newcommand\km{\text{ km}}
+\newcommand\J{\text{ J}}
+\newcommand\Nm{\text{ Nm}}
+\newcommand\ms{\text{ ms}^{-1}}
+\newcommand\mss{\text{ ms}^{-2}}
+\newcommand\kg{\text{ kg}}
+\newcommand\kgms{\text{ kg\;ms}^{-1}}
+\newcommand\kgmm{\text{ kg\;m}^{2}}
+\newcommand\kgmms{\text{ kg\;m}^2\text{s}^{-1}}
+\newcommand{\AxisRotator}[1][rotate=0]{%
+    \tikz [x=0.25cm,y=0.60cm,line width=.2ex,-stealth,#1] \draw (0,0) arc (-150:150:1 and 1);%
+}
+\def\centerarc[#1](#2)(#3:#4:#5){\draw[#1] ($(#2)+({#5*cos(#3)},{#5*sin(#3)})$) arc (#3:#4:#5)}
+% Syntax: \centerarc[draw options] (center) (initial angle:final angle:radius);
+\doublespacing
+
+\title{PHY 2048 Formulas}
+
+\begin{document}
+
+\begin{center}{\huge{\bf{PHY 2048 Formulas}}}
+\end{center}
+
+\begin{multicols*}{3}
+
+    \tikzstyle{mybox} = [draw=black,fill=white,very thick,rectangle,rounded corners, inner sep=10pt, inner ysep=10pt]
+    \tikzstyle{fancytitle} = [fill=black,text=white,font=\bfseries]
+
+    %%% DOT AND CROSS PRODUCTS %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $\vec{A} \cdot \vec{B} = AB\cos(\phi)$\\
+            $\vec{A} \times \vec{B} = AB\sin(\phi)$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt] at (box.north west) {Dot and Cross Product};
+    \end{tikzpicture}
+
+    %%% TRANSLATIONAL KINEMATICS %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $\displaystyle x = x_0 + vt$\\
+            $\displaystyle v = v_{0} + at$\\
+            $\displaystyle x = x_0 + v_{0}t + \frac{1}{2}at^2$\\
+            $\displaystyle v^2 = v_0^2 + 2a(\Delta x)$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt] at (box.north west) {Translational Kinematics};
+    \end{tikzpicture}
+
+    %%% ROTATIONAL KINEMATICS %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $\displaystyle \theta_f = \theta_0 + \omega t$\\
+            $\displaystyle \omega_f = \omega_0 + \alpha t$\\
+            $\displaystyle \theta_f = \theta_0 + \omega_0t + \frac{1}{2}\alpha t^2$\\
+            $\displaystyle \omega_f^2 = \omega_0^2 + 2\alpha(\Delta\theta)$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt] at (box.north west) {Rotational Kinematics};
+    \end{tikzpicture}
+
+    %%% PROJECTILE MOTION %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            \bf{Time of flight:} $T = \frac{2v_0\sin(\theta_0)}{g}$\\
+            \bf{Trajectory:}\\ $\displaystyle y = x\tan(\theta) - \bigg[\frac{g}{2(v_0\cos(\theta))^2}\bigg]x^2$\vspace{1.5mm}\\
+            \bf{Range:} $\displaystyle \frac{v_0^2\sin(2\theta_0)}{g}$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt] at (box.north west) {Projectile Motion};
+    \end{tikzpicture}
+
+    %%% UNIFORM CIRCULAR MOTION %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $\displaystyle a_c = \frac{v_T^2}{r}$\vspace{2mm}\\
+            $\displaystyle \omega = \frac{2\pi}{T}$\vspace{2mm}\\
+            $\displaystyle T = \frac{2\pi}{V}$\vspace{2mm}\\
+            $\displaystyle r = \frac{v^2}{g}$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt] at (box.north west) {Uniform Circular Motion};
+    \end{tikzpicture}
+
+    %%% ORBITAL MOTION %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $\displaystyle F_{c} = F_g$\vspace{2mm}\\
+            $\displaystyle v = \sqrt{\frac{GM}{r}}$\vspace{2mm}\\
+            $\displaystyle v = \frac{2\pi r}{T}$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt] at (box.north west) {Orbital Motion};
+    \end{tikzpicture}
+
+    %%% NEWTON'S LAWS %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            1. $v =$ constant when $F_{net} = 0$\\
+            2. $\displaystyle F_{net} = ma = \der{p}{t} = \der{}{t}(mv)$\\
+            3. $\vec{F}_{AB} = -\vec{F}_{BA}$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt] at (box.north west) {Newton's Laws};
+    \end{tikzpicture}
+
+    %%% COMMON FORCES %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $N = mg\cos(\theta)$\\
+            $F_{sp} = -k\Delta x$\\
+            $f_s \leq \mu_sN$\\
+            $f_k = \mu_kN$\\
+            $\displaystyle F_c = ma_c = m\frac{v^2}{r} = mr\omega^2$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt] at (box.north west) {Common Forces};
+    \end{tikzpicture}
+
+    %%% TERMINAL VELOCITY %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $\displaystyle v_T = \sqrt{\frac{2mg}{\rho CA}}$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt] at (box.north west) {Terminal Velocity};
+    \end{tikzpicture}
+
+    %%% WORK %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $\displaystyle W_{AB} = \int\limits_{A}^{B}\vec{F} \cdot d\vec{r}$\\
+            $W = \vec{F} \cdot \vec{d} = Fd\cos(\theta)$\\
+            $W_g = -mg\Delta y$\\
+            $\displaystyle W_{sp} = \frac{1}{2}k(x_f^2 - x_0^2)$\\
+            $W_f = \mu_kNd = \mu_kmgd$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt] at (box.north west) {Work};
+    \end{tikzpicture}
+
+    %%% WORK ENERGY THEOREM %%%
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            \vspace{1mm} $W_{net} = \Delta K = K_f - K_0$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt] at (box.north west) {Work-Energy Theorem};
+    \end{tikzpicture}
+    %%% ENERGY %%%
+
+    \begin{tikzpicture}
+        \node[mybox] (box){
+        \begin{minipage}{0.25\textwidth}
+            $\displaystyle K = \frac{1}{2}mv^2 = \frac{p^2}{2m}$\\
+            $U_g = mgh$\\
+            $\displaystyle U_{sp} = \frac{1}{2}k(x_f^2 - x_0^2)$
+        \end{minipage}
+        };
+        \node[fancytitle,right=10pt] at (box.north west) {Energy};
+    \end{tikzpicture}
+\end{multicols*}
+\end{document}
+
+%\begin{tikzpicture}
+%    \node[mybox] (box){
+%    \begin{minipage}{0.25\textwidth}
+%        
+%    \end{minipage}
+%    };
+%    \node[fancytitle,right=10pt] at (box.north west) {};
+%\end{tikzpicture}
