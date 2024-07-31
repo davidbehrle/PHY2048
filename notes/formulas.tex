@@ -279,28 +279,28 @@
             \bf{System of particles:}\\
             $\displaystyle \vec{r}_{cm} = \frac{1}{M}\sum_{j = 1}^{N}m_j\vec{r}_j$\\
             $\displaystyle v_{cm} = \der{\vec{r}_{cm}}{t} = \frac{1}{M}\sum_{j = 1}^{N}m_j\der{\vec{r}_j}{t}$\\
-            $M\vec{v}_{cm} = \sum_{j = 1}^{N}m_j\vec{v}_j$\\
+            $\displaystyle M\vec{v}_{cm} = \sum_{j = 1}^{N}m_j\vec{v}_j$\vspace{1.2mm}\\
             \bf{Continuous object:}\\
             $\displaystyle \vec{r}_{cm} = \frac{1}{M}\int\vec{r}dm$
         \end{minipage}
         };
-        \draw[-] (-2.75,-1)--(2.75,-1);
+        \draw[-] (-2.75,-1.3)--(2.75,-1.3);
         \node[fancytitle,right=10pt,fill=gbyellow] at (box.north west) {Center of Mass};
     \end{tikzpicture}
-    \vspace{0.4mm}
+    \vspace{0.8mm}
 
     %%% ROTATIONAL VARIABLES %%%
     \begin{tikzpicture}
         \node[mybox] (box){
         \begin{minipage}{0.25\textwidth}
             $\displaystyle \theta = \frac{s}{r}$\\
-            $\displaystyle \omega = \frac{v_t}{r} = \der{\theta}{t}$\\
-            $\displaystyle \alpha = \frac{a_t}{r} = \der{\omega}{t}$
+            $\displaystyle \omega = \frac{v_t}{r} = \der{\theta}{t}$ \hspace{8mm}$\displaystyle \alpha = \frac{a_t}{r} = \der{\omega}{t}$
+            
         \end{minipage}
         };
         \node[fancytitle,right=10pt,fill=gbblue] at (box.north west) {Rotational Variables};
     \end{tikzpicture}
-    \vspace{0.4mm}
+    \vspace{0.8mm}
 
     %%% ROTATIONAL KINEMATICS %%%
     \begin{tikzpicture}
@@ -314,7 +314,7 @@
         };
         \node[fancytitle,right=10pt,fill=gbpurple] at (box.north west) {Rotational Kinematics};
     \end{tikzpicture}
-    \vspace{0.4mm}
+    \vspace{0.8mm}
 
     %%% MOMENT OF INERTIA %%%
     \begin{tikzpicture}
@@ -327,7 +327,7 @@
         };
         \node[fancytitle,right=10pt] at (box.north west) {Moment of Inertia};
     \end{tikzpicture}
-    \vspace{0.4mm}
+    \vspace{0.8mm}
 
     %%% PARALLEL AXIS THEOREM %%%
     \begin{tikzpicture}
@@ -338,7 +338,7 @@
         };
         \node[fancytitle,right=10pt,fill=orange] at (box.north west) {Parallel Axis Theorem};
     \end{tikzpicture}
-    \vspace{0.4mm}
+    \vspace{0.8mm}
 
     %%% TORQUE %%%
     \begin{tikzpicture}
@@ -352,7 +352,7 @@
         };
         \node[fancytitle,right=10pt,fill=gbred] at (box.north west) {Torque};
     \end{tikzpicture}
-    \vspace{0.4mm}
+    \vspace{0.8mm}
 
     %%% ANGULAR MOMENTUM %%%
     \begin{tikzpicture}
