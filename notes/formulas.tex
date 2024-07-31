@@ -100,7 +100,7 @@
     \begin{tikzpicture}
         \node[mybox] (box){
         \begin{minipage}{0.25\textwidth}
-            \bf{Time of flight:} $T = \frac{2v_0\sin(\theta_0)}{g}$\\
+            \bf{Time of flight:} $\displaystyle T = \frac{2v_0\sin(\theta_0)}{g}$\\
             \bf{Trajectory:}\\ $\displaystyle y = x\tan(\theta) - \bigg[\frac{g}{2(v_0\cos(\theta))^2}\bigg]x^2$\vspace{2mm}\\
             \bf{Range:} $\displaystyle \frac{v_0^2\sin(2\theta_0)}{g}$
         \end{minipage}
@@ -184,9 +184,12 @@
             $W = \vec{F} \cdot \vec{d} = Fd\cos(\theta)$\\
             $W_g = -mg\Delta y$\\
             $\displaystyle W_{sp} = \frac{1}{2}k(x_f^2 - x_0^2)$\\
-            $W_f = \mu_kNd = \mu_kmgd$
+            $W_f = \mu_kNd = \mu_kmgd$\\
+            \bf{(}\boldmath{$F_{cons}$}\unboldmath\bf{, closed path)}\\
+            $\displaystyle W = \oint \vec{F} \cdot d\vec{r} = 0\ $
         \end{minipage}
         };
+        \draw[-] (-2.75,-1.2)--(2.75,-1.2);
         \node[fancytitle,right=10pt,fill=gbyellow] at (box.north west) {Work};
     \end{tikzpicture}
 
@@ -198,8 +201,7 @@
             $\displaystyle K_r = \frac{1}{2}I\omega^2$\\
             $U_g = mgh$\\
             $\displaystyle U_{sp} = \frac{1}{2}k(x_f^2 - x_0^2)$\\
-            $\Delta K_{AB} = -\Delta U_{AB}$\\
-            $\displaystyle W = \oint \vec{F} \cdot d\vec{r} = 0\ $ (closed path)
+            $\Delta K_{AB} = -\Delta U_{AB}$
         \end{minipage}
         };
         \node[fancytitle,right=10pt,fill=gbblue] at (box.north west) {Energy};
@@ -220,8 +222,9 @@
     \begin{tikzpicture}
         \node[mybox] (box){
         \begin{minipage}{0.25\textwidth}
-            \vspace{1mm}\bf{With conservative forces:}\\
-            $K_A + U_A =  K_B + U_B$\\
+            %\vspace{1mm}\bf{With conservative forces:}\\
+            \vspace{1mm}
+            $K_A + U_A =  K_B + U_B$\hspace{1.5mm} (if $W_{nc} = 0$)\\
             $W_{nc} = \Delta(K + U) = \Delta E$
         \end{minipage}
         };
